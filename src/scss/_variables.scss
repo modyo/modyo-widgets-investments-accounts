@@ -1,0 +1,79 @@
+// BOOTSTRAP VARIABLES
+
+// Color system
+
+$white: #FFF;
+$gray-100: #F8F9FA;
+$gray-200: #E9ECEF;
+$gray-300: #DEE2E6;
+$gray-400: #CED4DA;
+$gray-500: #ADB5BD;
+$gray-600: #6C757D;
+$gray-700: #495057;
+$gray-800: #343A40;
+$gray-900: #212529;
+$black: #000;
+$blue: #007BFF;
+$lightblue: #0587D6;
+$lightblue-dark: #0468A4;
+$indigo: #6610F2;
+$purple: #6F42C1;
+$pink: #E83E8C;
+$red: #DC3545;
+$orange: #FD7E14;
+$yellow: #FFC107;
+$green: #28A745;
+$green-dark: #9DC541;
+$teal: #20C997;
+$cyan: #17A2B8;
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-800;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+
+$spacer: 1rem;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white;
+$body-color: $gray-900;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom: 1rem;
+
+
+// Typography
+//
+// Font, line-height, and color
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-family-base: $font-family-sans-serif;
+// stylelint-enable value-keyword-case
+
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * .875;

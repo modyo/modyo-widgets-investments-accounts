@@ -1,0 +1,106 @@
+{
+  "investment-details": {
+    "current-investment": "Inversión Actual",
+    "distribution": "Distribución",
+    "fees": "Cuotas",
+    "modal": {
+      "current-price": "Precio Actual",
+      "current-valorization": "Valorización actual",
+      "current-value": "Valor actual",
+      "date": "Fecha Inversión",
+      "fees": "Cuotas",
+      "initial-investment": "Inversión Inicial",
+      "market-value": "Valor Mercado",
+      "purchase-price": "Precio Compra",
+      "purchase-value": "Valor compra",
+      "quantity": "Cantidad",
+      "title": {
+        "buy-sell-historical": "Histórico Compra/Venta",
+        "input-rescue-historical": "Histórico Aporte/Rescate"
+      }
+    },
+    "rentability": "Rentabilidad",
+    "stock": "Acciones",
+    "summary": "Resumen",
+    "title": "Detalle de inversiones",
+    "total-current-investment": "Total inversión actual",
+    "utility-total-loss": "Utilidad/Pérdida total"
+  },
+  "investment-item": {
+    "closing-price": "Precio cierre",
+    "detail": "Detalle",
+    "distribution": "Distribución",
+    "fee-avg-value": "Valor promedio cuota",
+    "fee-value": "Valor cuota",
+    "purchase-avg-price": "Precio promedio compra",
+    "rentability": "Rentabilidad",
+    "utility-total-loss": "Utilidad/Pérdida total"
+  },
+  "investments-summary": {
+    "currency-detail": "Detalle por moneda",
+    "empty-amount": "Para comenzar a invertir debes abonar a tu caja",
+    "pay": "Abonar",
+    "title": "Resumen de inversiones"
+  },
+  "movements": {
+    "amount": "Monto",
+    "cash-balance": "Saldo en caja",
+    "export-excel": "Exportar excel",
+    "fee-value": "Valor Cuota",
+    "fees": "Cuotas",
+    "final": "final",
+    "from-account": "Cuenta Origen",
+    "initial": "Inicial",
+    "movement-types": "Tipos de Movimientos",
+    "mutual-fund": "Fondo Mutuo",
+    "no-movements": "No hay movimientos en este período",
+    "payments": "Abonos",
+    "period": "Período",
+    "period-resume": "Resumen del período",
+    "purchases": "Compras/aportes",
+    "quantity": "Cantidad",
+    "sales": "Ventas/rescates",
+    "select-other-period": "Seleccione otro período desde la barra lateral",
+    "stock": "Acción",
+    "title": "Detalle de movimientos",
+    "to": "a",
+    "to-account": "Cuenta Destino",
+    "total-amount": "Monto Total",
+    "transfers": "Transferencias",
+    "types": {
+      "all": "Todos",
+      "cash-payment": "Abono en caja",
+      "dividend": "Dividendo",
+      "mutual-funds-contribution": "Aporte fondos mutuos",
+      "mutual-funds-rescue": "Rescate fondos mutuos",
+      "others": "Otros",
+      "stock-purchase": "Compra acciones",
+      "stock-sell": "Venta acciones"
+    },
+    "unit-price": "Precio Unitario"
+  },
+  "settings-panel": {
+    "account-name-lbl": "Nombre cuenta",
+    "email-notifications-title": "Notificaciones por email",
+    "title": "Configurar cuenta",
+    "update-btn": "Actualizar"
+  },
+  "statements": {
+    "download": "Descargar",
+    "period": "Período",
+    "title": "Cartolas de la Cuenta"
+  },
+  "summary-resume": {
+    "account-label": "Patrimonio cuenta",
+    "config-account-btn": "Configurar cuenta",
+    "invest-btn": "Invertir",
+    "investments-btn": "Inversiones",
+    "movements-btn": "Movimientos",
+    "pay-btn": "Abonar",
+    "statements-btn": "Cartolas",
+    "title": "Resumen"
+  },
+  "ui": {
+    "back": "Volver"
+  }
+}
