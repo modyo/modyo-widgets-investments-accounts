@@ -1,0 +1,115 @@
+{
+  "investment-detail": {
+    "item": {
+      "modal": {
+        "title": {
+          "purchase-historical": "@@@@@@@@"
+        }
+      }
+    }
+  },
+  "investment-details": {
+    "current-investment": "@@@@@@@@",
+    "distribution": "@@@@@@@@",
+    "fees": "@@@@@@@@",
+    "modal": {
+      "current-price": "@@@@@@@@",
+      "current-valorization": "@@@@@@@@",
+      "current-value": "@@@@@@@@",
+      "date": "@@@@@@@@",
+      "fees": "@@@@@@@@",
+      "initial-investment": "@@@@@@@@",
+      "market-value": "@@@@@@@@",
+      "purchase-price": "@@@@@@@@",
+      "purchase-value": "@@@@@@@@",
+      "quantity": "@@@@@@@@",
+      "title": {
+        "buy-sell-historical": "@@@@@@@@",
+        "input-rescue-historical": "@@@@@@@@e"
+      }
+    },
+    "rentability": "@@@@@@@@",
+    "stock": "@@@@@@@@",
+    "summary": "@@@@@@@@",
+    "title": "@@@@@@@@",
+    "total-current-investment": "@@@@@@@@",
+    "utility-total-loss": "@@@@@@@@"
+  },
+  "investment-item": {
+    "closing-price": "@@@@@@@@",
+    "detail": "@@@@@@@@",
+    "distribution": "@@@@@@@@",
+    "fee-avg-value": "@@@@@@@@",
+    "fee-value": "@@@@@@@@",
+    "purchase-avg-price": "@@@@@@@@",
+    "rentability": "@@@@@@@@",
+    "utility-total-loss": "@@@@@@@@"
+  },
+  "investments-summary": {
+    "currency-detail": "@@@@@@@@",
+    "empty-amount": "@@@@@@@@",
+    "pay": "@@@@@@@@",
+    "title": "@@@@@@@@"
+  },
+  "movements": {
+    "amount": "@@@@@@@@",
+    "cash-balance": "@@@@@@@@",
+    "export-excel": "@@@@@@@@",
+    "fee-value": "@@@@@@@@",
+    "fees": "@@@@@@@@",
+    "final": "@@@@@@@@",
+    "from-account": "@@@@@@@@",
+    "initial": "@@@@@@@@",
+    "movement-types": "@@@@@@@@",
+    "mutual-fund": "@@@@@@@@",
+    "no-movements": "@@@@@@@@",
+    "payments": "@@@@@@@@",
+    "period": "@@@@@@@@",
+    "period-resume": "@@@@@@@@",
+    "purchases": "@@@@@@@@",
+    "quantity": "@@@@@@@@",
+    "sales": "@@@@@@@@s",
+    "select-other-period": "@@@@@@@@",
+    "stock": "@@@@@@@@",
+    "title": "@@@@@@@@",
+    "to": "@@@@@@@@",
+    "to-account": "@@@@@@@@",
+    "total-amount": "@@@@@@@@",
+    "transfers": "@@@@@@@@",
+    "types": {
+      "all": "@@@@@@@@",
+      "cash-payment": "@@@@@@@@",
+      "dividend": "@@@@@@@@",
+      "mutual-funds-contribution": "@@@@@@@@",
+      "mutual-funds-rescue": "@@@@@@@@",
+      "others": "@@@@@@@@",
+      "stock-purchase": "@@@@@@@@",
+      "stock-sell": "@@@@@@@@"
+    },
+    "unit-price": "@@@@@@@@"
+  },
+  "settings-panel": {
+    "account-name-lbl": "@@@@@@@@",
+    "email-notifications-title": "@@@@@@@@",
+    "title": "@@@@@@@@",
+    "update-btn": "@@@@@@@@"
+  },
+  "statements": {
+    "download": "@@@@@@@@",
+    "period": "@@@@@@@@",
+    "title": "@@@@@@@@"
+  },
+  "summary-resume": {
+    "account-label": "@@@@@@@@",
+    "config-account-btn": "@@@@@@@@",
+    "invest-btn": "@@@@@@@@",
+    "investments-btn": "@@@@@@@@",
+    "movements-btn": "@@@@@@@@",
+    "pay-btn": "@@@@@@@@",
+    "statements-btn": "@@@@@@@@",
+    "title": "@@@@@@@@"
+  },
+  "ui": {
+    "back": "@@@@@@@@"
+  }
+}
