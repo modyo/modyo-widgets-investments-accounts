@@ -87,7 +87,7 @@ export default {
           const dato = data.data;
           vm.statements = dato.account.statements;
           vm.isLoading = false;
-        }, err => err);
+        }, (err) => err);
     },
   },
 };

@@ -112,10 +112,10 @@ export default {
       return this.$store.state.localCurrency;
     },
     cash() {
-      return this.account.products.find(product => product.name === 'Caja');
+      return this.account.products.find((product) => product.name === 'Caja');
     },
     products() {
-      return this.account.products.filter(product => product.name !== 'Caja');
+      return this.account.products.filter((product) => product.name !== 'Caja');
     },
     currencies() {
       return this.account.currencies;
