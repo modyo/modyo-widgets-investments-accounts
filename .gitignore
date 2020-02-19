@@ -1,6 +1,12 @@
-# Logs
-logs
-*.log
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -100,5 +106,11 @@ dist
 # DynamoDB Local files
 .dynamodb/
 
-# TernJS port file
-.tern-port
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
