@@ -144,7 +144,7 @@ export default {
   watch: {
     accounts() {
       if (this.paramAccountId) {
-        this.activeAccount = this.accounts.find(account => account.id === this.paramAccountId);
+        this.activeAccount = this.accounts.find((account) => account.id === this.paramAccountId);
       } else {
         [this.activeAccount] = this.accounts;
       }

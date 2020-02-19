@@ -532,7 +532,7 @@ export default {
           this.summary = dato.summary;
           this.isLoading = false;
         })
-        .catch(err => err);
+        .catch((err) => err);
     },
   },
 };

@@ -113,7 +113,7 @@ export default {
       return this.$store.state.localCurrency;
     },
     cash() {
-      return this.account.products.find(product => product.name === 'Caja');
+      return this.account.products.find((product) => product.name === 'Caja');
     },
   },
 };

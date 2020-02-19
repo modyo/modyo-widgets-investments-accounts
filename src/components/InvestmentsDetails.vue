@@ -156,7 +156,7 @@ export default {
       return this.$store.state.localCurrency;
     },
     products() {
-      return this.account.products.filter(product => product.name !== 'Caja');
+      return this.account.products.filter((product) => product.name !== 'Caja');
     },
     currencies() {
       return this.account.currencies;
@@ -176,7 +176,7 @@ export default {
       this.$emit('change-investment-type', value);
     },
     setActiveProduct() {
-      this.activeProduct = this.products.find(product => product.slug === this.investmentType);
+      this.activeProduct = this.products.find((product) => product.slug === this.investmentType);
     },
     closePanel() {
       this.$store.commit('SET_SHOW_PANEL', false);
