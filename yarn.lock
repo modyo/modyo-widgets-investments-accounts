@@ -1020,10 +1020,10 @@
     body-scroll-lock "^2.6.1"
     dayjs "^1.8.14"
 
-"@modyo/vue-cli-plugin-connector@^1.2.8":
-  version "1.3.3"
-  resolved "https://npm.pkg.github.com/download/@modyo/vue-cli-plugin-connector/1.3.3/c610660c2a26b6234a1e6a602f3e338a187bf9abfd5508ba3272acff54f6a6a4#5b35d6d3d7efbec52899ee700206a99a26cf444f"
-  integrity sha512-FNrfLc63WtBR1Du+f3KfRL0Of+d3DfqoU23Mx5iGUy+j3v1Z6TcxdV8RzMy6Nk/h2fQ1ROfDwANrC0JNzkHG8w==
+"@modyo/vue-cli-plugin-connector@^1.3.5":
+  version "1.3.5"
+  resolved "https://npm.pkg.github.com/download/@modyo/vue-cli-plugin-connector/1.3.5/7e87c0edaba800795ceae304020a0112a14ac8ef3127f6ac3d9dbb6713c30a3f#22ef884a716b9f97c887a1185d721094db6fc4f4"
+  integrity sha512-6qDfENyXWn2dYJ+wJH9RUfe2mYOSIy2l4Zf+5EtX7RNmVhgJxw9MOqZ6WoMHWm49OtggRCsbfx5BxOb0lDaFFw==
   dependencies:
     "@fullhuman/postcss-purgecss" "2.0.6"
     "@vue/cli-shared-utils" "^4.2.2"
