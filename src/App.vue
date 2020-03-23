@@ -51,7 +51,7 @@
               @config="openConfigPanel()"
               @goto="goToSlide" />
           </div>
-          <div class="col-lg-8 accounts__investsments-summary p-4">
+          <div class="col-lg-8 accounts__investsments-summary">
             <investments-summary
               :account="activeAccount"
               :indicators="indicators"

@@ -59,8 +59,20 @@ p {
   color: $tertiary-100;
 }
 
+.bg-tertiary {
+  background-color: $tertiary-100;
+}
+
 .bg-tertiary-20 {
   background-color: $tertiary-20;
+}
+
+.bg-stocks {
+  background-color: $stocks;
+}
+
+.bg-mutual-funds {
+  background-color: $mutual-funds;
 }
 
 .btn-primary-dark {
