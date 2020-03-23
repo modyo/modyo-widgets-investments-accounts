@@ -125,7 +125,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.mr-1 {
-  margin-right: 1rem;
-}
 </style>

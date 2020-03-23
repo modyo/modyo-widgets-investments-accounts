@@ -3,13 +3,17 @@
     <div
       v-if="isLoading"
       class="loading">
-      <div class="loading-ico" />
+      <div
+        class="spinner-border"
+        role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
     <div
       v-else
       class="accounts__container container">
-      <div class="tabs-top accounts-tabs">
-        <div class="select-box d-block d-sm-none">
+      <div class="">
+        <div class="d-block d-lg-none">
           <select
             id="account"
             v-model="activeAccount"
@@ -23,7 +27,7 @@
             </option>
           </select>
         </div>
-        <ul class="nav nav-tabs-line d-none d-sm-flex">
+        <ul class="nav d-none d-lg-flex">
           <li
             v-for="account in accounts"
             :key="account.id"
@@ -36,54 +40,48 @@
           </li>
         </ul>
       </div>
-      <div class="wrapper-slider">
+      <div>
         <div
-          :class="config || statements ? 'no-transform' : false"
-          class="accounts-body">
-          <div class="row no-gutters h-100">
-            <div class="col-md-4">
-              <summary-resume
-                :account="activeAccount"
-                @statements="openStatementsPanel()"
-                @config="openConfigPanel()"
-                @goto="goToSlide" />
-            </div>
-            <div class="col-md-8">
-              <investments-summary
-                :account="activeAccount"
-                :indicators="indicators"
-                @goto="goToSlide" />
-
-              <transition name="slide">
-                <div
-                  v-if="config === true"
-                  key="config"
-                  class="config-account p-4 p-lg-5">
-                  <settings-panel
-                    :account="activeAccount"
-                    @closepanel="closePanel()" />
-                </div>
-                <div
-                  v-if="statements === true"
-                  key="statements"
-                  class="statements p-3 p-lg-5">
-                  <statements-panel
-                    :account-id="activeAccount.id"
-                    @closestatementspanel="closeStatementsPanel()" />
-                </div>
-              </transition>
-            </div>
+          class="row no-gutters h-100"
+          :class="config || statements ? 'no-transform' : false">
+          <div class="col-lg-4">
+            <summary-resume
+              :account="activeAccount"
+              @statements="openStatementsPanel()"
+              @config="openConfigPanel()"
+              @goto="goToSlide" />
+          </div>
+          <div class="col-lg-8">
+            <investments-summary
+              :account="activeAccount"
+              :indicators="indicators"
+              @goto="goToSlide" />
+            <transition name="slide">
+              <div
+                v-if="config === true"
+                key="config"
+                class="p-4 p-lg-5">
+                <settings-panel
+                  :account="activeAccount"
+                  @closepanel="closePanel()" />
+              </div>
+              <div
+                v-if="statements === true"
+                key="statements"
+                class="p-3 p-lg-5">
+                <statements-panel
+                  :account-id="activeAccount.id"
+                  @closestatementspanel="closeStatementsPanel()" />
+              </div>
+            </transition>
           </div>
         </div>
-        <div
-          v-if="showPanel"
-          class="movements-investments">
+        <div v-if="showPanel">
           <keep-alive>
             <component
               :is="activeSlide"
               :account="activeAccount"
               :investment-type="investmentType"
-              class="swich-component"
               @change-investment-type="changeInvestmentType" />
           </keep-alive>
         </div>
