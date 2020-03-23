@@ -1,5 +1,5 @@
 <template>
-  <div class="accounts-app py-4">
+  <div class="accounts-app py-lg-5">
     <div
       v-if="isLoading"
       class="loading">
@@ -11,7 +11,7 @@
     </div>
     <div
       v-else
-      class="accounts__container container">
+      class="accounts__container container p-0">
       <div class="">
         <div class="d-block d-lg-none">
           <select
@@ -27,7 +27,7 @@
             </option>
           </select>
         </div>
-        <ul class="nav d-none d-lg-flex">
+        <ul class="accounts__nav nav d-none d-lg-flex">
           <li
             v-for="account in accounts"
             :key="account.id"
@@ -35,7 +35,7 @@
             <a
               :class="{active: activeAccount.id == account.id}"
               href="#"
-              class="nav-link"
+              class="nav-link px-4"
               @click.prevent="setActiveAccount(account)">{{ account.name }}</a>
           </li>
         </ul>
@@ -51,7 +51,7 @@
               @config="openConfigPanel()"
               @goto="goToSlide" />
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-8 accounts__investsments-summary p-4">
             <investments-summary
               :account="activeAccount"
               :indicators="indicators"
@@ -199,9 +199,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './scss/custom.scss';
+
 @media (min-width: 992px) {
   .accounts__container {
     background-color: white;
+  }
+  .accounts__nav {
+    border-bottom: 1px solid $gray-300;
+    .nav-item {
+      .nav-link {
+        &.active {
+          background-color: $primary-10;
+          border-bottom: 4px solid $primary;
+        }
+      }
+    }
+  }
+  .accounts__investsments-summary {
+    background-color: $tertiary-20;
   }
 }
 </style>

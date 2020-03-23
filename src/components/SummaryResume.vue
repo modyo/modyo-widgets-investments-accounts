@@ -1,49 +1,49 @@
 <template>
-  <div class="accounts-sidebar pt-lg-4">
-    <div class="sidebar-resume-header p-3">
-      <p class="mb-0 light">
+  <div class="accounts__summary-sidebar">
+    <div class="p-4">
+      <p class="mb-0">
         {{ $t('summary-resume.title') }}
       </p>
-      <h4 class="mb-0">
+      <h4 class="mb-0 text-primary">
         <strong>{{ account.name }}</strong>
         <a
           href="#"
-          class="d-inline-block d-sm-none"
+          class="d-inline-block d-lg-none"
           @click.prevent="$emit('config')">
           <font-awesome-icon icon="cog" />
         </a>
       </h4>
     </div>
-    <div class="sidebar-resume-body">
-      <div class="total-amount p-3 text-center text-lg-right">
-        <h3 class="mb-0 global-price">
+    <div>
+      <div class="text-center text-lg-right px-4 mb-4">
+        <h3 class="mb-0 text-primary">
           {{ account.amount.valueString }}
         </h3>
         <div class="">
           <p class="mb-0 d-block">
             {{ $t('summary-resume.account-label') }}
           </p>
-          <small class="d-none d-sm-block light">{{ account.valuationDate | date }}</small>
+          <small class="d-none d-lg-block">{{ account.valuationDate | date }}</small>
         </div>
       </div>
-      <table class="table">
+      <table class="table border-bottom mb-0">
         <tr>
-          <td>{{ cash.name }}</td>
-          <td class="text-right">
+          <td class="pl-4">{{ cash.name }}</td>
+          <td class="pr-4 text-right">
             <strong class="blue">{{ cash.amount.valueString }}</strong>
           </td>
         </tr>
         <tr>
-          <td>{{ cash.details[0].name }}</td>
+          <td class="pl-4">{{ cash.details[0].name }}</td>
           <td
-            class="text-right">
+            class="pr-4 text-right">
             <strong class="blue">
               {{ cash.details[0].amount.valueString }}
             </strong>
           </td>
         </tr>
       </table>
-      <div class="actions-resume-body p-3">
+      <div class="px-4 pb-4 pt-2 mt-4">
         <a
           href="#"
           class="btn btn-secondary btn-block"
@@ -51,7 +51,7 @@
           <font-awesome-icon
             icon="chevron-right"
             size="xs"
-            class="ml-05" /> </a>
+            class="ml-2" /> </a>
         <a
           href="#"
           class="btn btn-secondary btn-block"
@@ -59,7 +59,7 @@
           <font-awesome-icon
             icon="chevron-right"
             size="xs"
-            class="ml-05" /></a>
+            class="ml-2" /></a>
         <a
           href="#"
           class="btn btn-secondary btn-block"
@@ -67,27 +67,29 @@
           <font-awesome-icon
             icon="chevron-right"
             size="xs"
-            class="ml-05" /></a>
+            class="ml-2" /></a>
 
-        <div class="row mt-3">
-          <div class="col-6 mt-2">
+        <div class="row no-gutters mt-4">
+          <div class="col-6 pr-lg-2">
             <a
               href="/privado/fondos-mutuos"
-              class="btn btn-lightblue btn-block">{{ $t('summary-resume.invest-btn') }}</a>
+              class="btn btn-primary btn-block">{{ $t('summary-resume.invest-btn') }}</a>
           </div>
-          <div class="col-6 mt-2">
+          <div class="col-6 pl-lg-2">
             <a
               href="/privado/abonar"
-              class="btn btn-lightblue btn-block">{{ $t('summary-resume.pay-btn') }}</a>
+              class="btn btn-primary btn-block">{{ $t('summary-resume.pay-btn') }}</a>
           </div>
         </div>
 
-        <div class="mt-3 d-none d-sm-block">
+        <div class="mt-4 d-none d-lg-block">
           <a
             href="#"
-            class="btn btn-link px-0"
+            class="btn border btn-block"
             @click.prevent="$emit('config')">
-            <font-awesome-icon icon="cog" /> {{ $t('summary-resume.config-account-btn') }}
+            <font-awesome-icon
+              icon="cog"
+              class="mr-2" /> {{ $t('summary-resume.config-account-btn') }}
           </a>
         </div>
       </div>
