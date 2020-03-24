@@ -42,6 +42,7 @@
       </div>
       <div>
         <div
+          v-if="!showPanel"
           class="row no-gutters h-100"
           :class="config || statements ? 'no-transform' : false">
           <div class="col-lg-4">

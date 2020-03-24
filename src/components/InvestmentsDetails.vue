@@ -1,122 +1,122 @@
 <template>
   <div>
-    <div class="header-nav d-flex">
+    <div class="d-flex justify-content-between px-4 py-3 border-bottom">
       <a
         href="#"
-        class="back-breadcrumb light mr-3"
+        class="mr-3"
         @click.prevent="closePanel">
         <font-awesome-icon
-          icon="chevron-left" /> Volver</a>
-      <h4 class="mb-0">
+          icon="chevron-left"
+          size="sm"
+          class="mr-2" /> Volver</a>
+      <h4 class="mb-0 text-primary">
         {{ $t('investment-details.title') }}
       </h4>
     </div>
-    <div class="row no-gutters row-investments p-3 p-sm-0">
-      <div class="col-md-3">
-        <div class="accounts-sidebar sidebar-accounts-investments">
-          <div class="select-box d-block d-sm-none mb-3">
-            <select
-              id="investments"
-              class="form-control"
-              name=""
-              @change="changeActiveProduct($event.target.value)">
-              <option
-                v-for="product in products"
-                :key="product.id"
-                :value="product.slug"
-                :selected="investmentType === product.slug">
-                {{ product.name }}
-              </option>
-            </select>
-          </div>
-          <ul class="nav flex-column d-none d-sm-flex">
-            <li
-              v-for="product in products"
-              :key="product.id"
-              class="nav-item">
-              <a
-                :class="{active: investmentType == product.slug}"
-                class="nav-link"
-                @click="changeActiveProduct(product.slug)">{{ product.name }}</a>
-            </li>
-          </ul>
-        </div>
+    <div class="row no-gutters">
+      <div class="col-lg-3 p-4 border-right">
+        <select
+          id="investments"
+          class="form-control d-block d-lg-none mb-3"
+          @change="changeActiveProduct($event.target.value)">
+          <option
+            v-for="product in products"
+            :key="product.id"
+            :value="product.slug"
+            :selected="investmentType === product.slug">
+            {{ product.name }}
+          </option>
+        </select>
+        <ul class="nav nav-pills flex-column d-none d-lg-flex">
+          <li
+            v-for="(product,index) in products"
+            :key="product.id"
+            class="nav-item"
+            :class="index==products.length-1 ? 'mt-3' : false">
+            <a
+              :class="investmentType == product.slug ? 'active' : 'border'"
+              class="nav-link d-flex justify-content-between align-items-center"
+              @click="changeActiveProduct(product.slug)">
+              {{ product.name }}
+              <font-awesome-icon
+                icon="chevron-right"
+                size="sm"
+                class="ml-2" />
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="col-md-9">
-        <div class="accounts-main p-lg-3">
-          <div class="table-flex table-scroll-body">
-            <div class="row no-gutters tr-header-row d-none d-sm-flex">
-              <div class="col-md-3" />
-              <div
-                v-if="investmentType === 'stocks'"
-                class="col-md-2 text-right">
-                <strong>{{ $t('investment-details.stock') }}</strong>
-              </div>
-              <div
-                v-if="investmentType === 'mutual-funds'"
-                class="col-md-2 text-right">
-                <strong>{{ $t('investment-details.fees') }}</strong>
-              </div>
-              <div class="col-md-2 text-right">
-                <strong>{{ $t('investment-details.rentability') }}</strong>
-              </div>
-              <div class="col-md-3 text-right">
-                <strong>{{ $t('investment-details.current-investment') }}</strong>
-              </div>
-              <div class="col-md-2 text-right">
-                <strong>{{ $t('investment-details.distribution') }}</strong>
-              </div>
+      <div class="col-lg-9 investments-details__content">
+        <div class="p-4">
+          <div class="row no-gutters d-none d-lg-flex">
+            <div class="col-lg-3" />
+            <div
+              v-if="investmentType === 'stocks'"
+              class="col-lg-2 text-right">
+              <strong>{{ $t('investment-details.stock') }}</strong>
             </div>
             <div
-              class="row no-gutters tr-header-row d-flex d-sm-none"
-              style="padding-right: 40px">
-              <div class="col" />
-              <div
-                v-if="investmentType === 'stocks'"
-                class="col text-right">
-                <strong>{{ $t('investment-details.stock') }}</strong>
-              </div>
-              <div
-                v-if="investmentType === 'mutual-funds'"
-                class="col text-right">
-                <strong>{{ $t('investment-details.fees') }}</strong>
-              </div>
-              <div class="col text-right">
-                <strong>{{ $t('investment-details.distribution') }}</strong>
-              </div>
+              v-if="investmentType === 'mutual-funds'"
+              class="col-lg-2 text-right">
+              <strong>{{ $t('investment-details.fees') }}</strong>
             </div>
-
-            <div class="tbody-flex">
-              <div
-                id="investments-accordion"
-                role="tablist">
-                <investment-item
-                  v-for="item in activeProduct.elements"
-                  :key="item.id"
-                  :item="item" />
-              </div>
+            <div class="col-lg-2 text-right">
+              <strong>{{ $t('investment-details.rentability') }}</strong>
             </div>
-            <div class="tfooter-flex">
-              <div class="tr-flex align-items-center">
-                <div class="col-md-4 td-flex d-none d-sm-flex">
-                  <h4 class="mb-0">
-                    {{ $t('investment-details.summary') }}
-                  </h4>
-                </div>
-                <div class="col col-md-3 td-flex ml-auto text-right">
-                  <strong class="d-block">{{ activeProduct.amountTotalReturn.valueString }}</strong>
-                  <small>{{ $t('investment-details.utility-total-loss') }}</small>
-                </div>
-                <div class="col col-md-3 td-flex text-right">
-                  <p class="mb-0">
-                    {{ activeProduct.amount.valueString }}
-                  </p>
-                  <small>{{ $t('investment-details.total-current-investment') }}</small>
-                </div>
-                <div class="col col-md-2 td-flex text-right">
-                  {{ activeProduct.amount.percentageString }}
-                </div>
-              </div>
+            <div class="col-lg-3 text-right">
+              <strong>{{ $t('investment-details.current-investment') }}</strong>
+            </div>
+            <div class="col-lg-2 text-right">
+              <strong>{{ $t('investment-details.distribution') }}</strong>
+            </div>
+          </div>
+          <div class="row no-gutters d-flex d-lg-none">
+            <div class="col" />
+            <div
+              v-if="investmentType === 'stocks'"
+              class="col text-right">
+              <strong>{{ $t('investment-details.stock') }}</strong>
+            </div>
+            <div
+              v-if="investmentType === 'mutual-funds'"
+              class="col text-right">
+              <strong>{{ $t('investment-details.fees') }}</strong>
+            </div>
+            <div class="col text-right">
+              <strong>{{ $t('investment-details.distribution') }}</strong>
+            </div>
+          </div>
+          <div
+            id="investments-accordion"
+            class="mt-4"
+            role="tablist">
+            <investment-item
+              v-for="item in activeProduct.elements"
+              :key="item.id"
+              :item="item" />
+          </div>
+        </div>
+        <div class="px-4 py-3 bg-white border-top">
+          <div class="row no-gutters">
+            <div class="col-lg-4 d-none d-lg-flex">
+              <h5 class="mb-0 text-primary">
+                {{ $t('investment-details.summary') }}
+              </h5>
+            </div>
+            <div class="col col-lg-3 ml-auto text-right">
+              <strong class="d-block">{{ activeProduct.amountTotalReturn.valueString }}</strong>
+              <small>{{ $t('investment-details.utility-total-loss') }}</small>
+            </div>
+            <div class="col col-lg-3 text-right">
+              <strong class="d-block">
+                {{ activeProduct.amount.valueString }}
+              </strong>
+              <small>{{ $t('investment-details.total-current-investment') }}</small>
+            </div>
+            <div class="col col-lg-2 text-right">
+              <strong class="d-block">
+                {{ activeProduct.amount.percentageString }}
+              </strong>
             </div>
           </div>
         </div>
@@ -185,5 +185,12 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+@import '../scss/_variables.scss';
+
+@media (min-width: 992px){
+  .investments-details__content {
+    background-color: $tertiary-20;
+  }
+}
 </style>

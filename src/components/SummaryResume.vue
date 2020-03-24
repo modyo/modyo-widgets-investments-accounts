@@ -1,9 +1,6 @@
 <template>
   <div class="accounts__summary-sidebar">
     <div class="p-4">
-      <p class="mb-0">
-        {{ $t('summary-resume.title') }}
-      </p>
       <h4 class="mb-0 text-primary">
         <strong>{{ account.name }}</strong>
         <a
@@ -13,6 +10,9 @@
           <font-awesome-icon icon="cog" />
         </a>
       </h4>
+      <p class="mb-0">
+        {{ $t('summary-resume.title') }}
+      </p>
     </div>
     <div>
       <div class="text-center text-lg-right px-4 mb-4">

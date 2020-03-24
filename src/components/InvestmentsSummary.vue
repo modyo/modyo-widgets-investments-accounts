@@ -1,19 +1,19 @@
 <template>
   <div class="h-100">
-    <div class="p-4">
-      <h3 class="text-primary mb-0">
+    <div
+      class="p-4 d-flex flex-column"
+      :class="cash.amount.value === 0 ? 'h-100' : false">
+      <h4 class="text-primary mb-0">
         {{ $t('investments-summary.title') }}
-      </h3>
+      </h4>
 
       <div
         v-if="cash.amount.value === 0"
-        class="d-flex align-items-center">
-        <div>
-          <h4>{{ $t('investments-summary.empty-amount') }}</h4>
-          <a
-            href="/privado/abonar"
-            class="btn btn-primary btn-lg">{{ $t('investments-summary.pay') }}</a>
-        </div>
+        class="d-flex flex-fill flex-column align-items-center justify-content-center ">
+        <h4>{{ $t('investments-summary.empty-amount') }}</h4>
+        <a
+          href="/privado/abonar"
+          class="btn btn-primary btn-lg px-5 mt-3">{{ $t('investments-summary.pay') }}</a>
       </div>
 
       <div
@@ -30,9 +30,7 @@
             :aria-valuenow="product.amount.percentage"
             aria-valuemin="0"
             aria-valuemax="100">
-            <span>
-              {{ product.amount.percentageString }}
-            </span>
+            {{ product.amount.percentageString }}
           </div>
         </div>
 
@@ -56,7 +54,9 @@
         </div>
 
         <div class="d-flex mt-5">
-          <h4 class="text-primary">{{ $t('investments-summary.currency-detail') }}</h4>
+          <h4 class="text-primary">
+            {{ $t('investments-summary.currency-detail') }}
+          </h4>
           <p class="mb-0 ml-auto">
             <span
               v-if="indicators.uf"
