@@ -1,5 +1,5 @@
 <template>
-  <div class="accounts__summary-sidebar">
+  <div class="accounts__summary-sidebar border-right">
     <div class="p-4">
       <h4 class="mb-0 text-primary">
         <strong>{{ account.name }}</strong>

@@ -43,8 +43,7 @@
       <div>
         <div
           v-if="!showPanel"
-          class="row no-gutters h-100"
-          :class="config || statements ? 'no-transform' : false">
+          class="row no-gutters h-100">
           <div class="col-lg-4">
             <summary-resume
               :account="activeAccount"
@@ -54,26 +53,21 @@
           </div>
           <div class="col-lg-8 accounts__investsments-summary">
             <investments-summary
+              v-if="!config && !statements"
               :account="activeAccount"
               :indicators="indicators"
               @goto="goToSlide" />
             <transition name="slide">
-              <div
+              <settings-panel
                 v-if="config === true"
                 key="config"
-                class="p-4 p-lg-5">
-                <settings-panel
-                  :account="activeAccount"
-                  @closepanel="closePanel()" />
-              </div>
-              <div
+                :account="activeAccount"
+                @closepanel="closePanel()" />
+              <statements-panel
                 v-if="statements === true"
                 key="statements"
-                class="p-3 p-lg-5">
-                <statements-panel
-                  :account-id="activeAccount.id"
-                  @closestatementspanel="closeStatementsPanel()" />
-              </div>
+                :account-id="activeAccount.id"
+                @closestatementspanel="closeStatementsPanel()" />
             </transition>
           </div>
         </div>
