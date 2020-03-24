@@ -1,53 +1,63 @@
 <template>
   <div
     v-if="loadingStatus"
-    class="loading">
-    <div class="loading-ico" />
+    class="spinner-border"
+    role="status">
+    <span class="sr-only">Loading...</span>
   </div>
 
   <div v-else>
-    <div
-      class="close"
-      @click.prevent="$emit('closepanel')">
-      <font-awesome-icon
-        icon="times"
-        style="cursor: pointer" />
-    </div>
-    <h3 class="mb-4">
-      {{ $t('settings-panel.title') }}
-    </h3>
-    <div class="form-group mb-4">
-      <label for="account-name">{{ $t('settings-panel.account-name-lbl') }}</label>
-      <input
-        id="account-name"
-        v-model="config.name"
-        type="text"
-        class="form-control">
+    <div class="d-flex justify-content-between px-4 py-3 border-bottom bg-white">
+      <a
+        href="#"
+        class="mr-3"
+        @click.prevent="$emit('closepanel')">
+        <font-awesome-icon
+          icon="chevron-left"
+          size="sm"
+          class="mr-2" /> Volver</a>
+      <h4 class="mb-0 text-primary">
+        {{ $t('settings-panel.title') }}
+      </h4>
     </div>
 
-    <div class="text-right mb-5">
-      <button class="btn btn-sm btn-primary">
-        {{ $t('settings-panel.update-btn') }}
-      </button>
-    </div>
-
-    <p><strong>{{ $t('settings-panel.email-notifications-title') }}:</strong></p>
-    <div
-      v-for="input in config.notifications"
-      :key="input.id"
-      class="d-flex justify-content-between mb-2">
-      <p class="mb-0">
-        {{ input.name }}
-      </p>
-      <div class="custom-control custom-checkbox">
-        <input
-          :id="input.id"
-          v-model="input.state"
-          type="checkbox"
-          class="custom-control-input">
+    <div class="p-4">
+      <div class="form-group mb-4">
         <label
-          :for="input.id"
-          class="custom-control-label" />
+          for="account-name"
+          class="text-primary mb-2">
+          <strong>{{ $t('settings-panel.account-name-lbl') }}</strong>
+        </label>
+        <input
+          id="account-name"
+          v-model="config.name"
+          type="text"
+          class="form-control">
+      </div>
+      <p class="text-primary mb-2">
+        <strong>{{ $t('settings-panel.email-notifications-title') }}:</strong>
+      </p>
+      <div
+        v-for="input in config.notifications"
+        :key="input.id"
+        class="mb-2">
+        <div class="settings__checkbox custom-control custom-checkbox">
+          <input
+            :id="input.id"
+            v-model="input.state"
+            type="checkbox"
+            class="custom-control-input">
+          <label
+            :for="input.id"
+            class="custom-control-label d-block">
+            {{ input.name }}
+          </label>
+        </div>
+      </div>
+      <div class="text-right mt-4">
+        <button class="btn btn-primary btn-block">
+          {{ $t('settings-panel.update-btn') }}
+        </button>
       </div>
     </div>
   </div>
@@ -82,3 +92,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.settings__checkbox {
+  padding-left: 0;
+  .custom-control-label {
+    &:before, &:after {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+</style>

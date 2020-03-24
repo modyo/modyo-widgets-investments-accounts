@@ -129,6 +129,9 @@ export default {
       return this.account.currencies;
     },
   },
+  created() {
+    this.$store.commit('SET_CURRENT_PAGE', '');
+  },
 };
 </script>
 
