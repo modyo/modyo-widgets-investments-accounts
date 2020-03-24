@@ -47,27 +47,27 @@
         </ul>
       </div>
       <div class="col-lg-9 investments-details__content">
-        <div class="p-4">
+        <div class="p-4 border-bottom">
           <div class="row no-gutters d-none d-lg-flex">
             <div class="col-lg-3" />
             <div
               v-if="investmentType === 'stocks'"
               class="col-lg-2 text-right">
-              <strong>{{ $t('investment-details.stock') }}</strong>
+              <strong class="text-primary">{{ $t('investment-details.stock') }}</strong>
             </div>
             <div
               v-if="investmentType === 'mutual-funds'"
               class="col-lg-2 text-right">
-              <strong>{{ $t('investment-details.fees') }}</strong>
+              <strong class="text-primary">{{ $t('investment-details.fees') }}</strong>
             </div>
             <div class="col-lg-2 text-right">
-              <strong>{{ $t('investment-details.rentability') }}</strong>
+              <strong class="text-primary">{{ $t('investment-details.rentability') }}</strong>
             </div>
             <div class="col-lg-3 text-right">
-              <strong>{{ $t('investment-details.current-investment') }}</strong>
+              <strong class="text-primary">{{ $t('investment-details.current-investment') }}</strong>
             </div>
             <div class="col-lg-2 text-right">
-              <strong>{{ $t('investment-details.distribution') }}</strong>
+              <strong class="text-primary">{{ $t('investment-details.distribution') }}</strong>
             </div>
           </div>
           <div class="row no-gutters d-flex d-lg-none">
@@ -86,17 +86,16 @@
               <strong>{{ $t('investment-details.distribution') }}</strong>
             </div>
           </div>
-          <div
-            id="investments-accordion"
-            class="mt-4"
-            role="tablist">
-            <investment-item
-              v-for="item in activeProduct.elements"
-              :key="item.id"
-              :item="item" />
-          </div>
         </div>
-        <div class="px-4 py-3 bg-white border-top">
+        <div
+          id="investments-accordion"
+          role="tablist">
+          <investment-item
+            v-for="item in activeProduct.elements"
+            :key="item.id"
+            :item="item" />
+        </div>
+        <div class="investments-details__summary px-4 py-3 border-top">
           <div class="row no-gutters">
             <div class="col-lg-4 d-none d-lg-flex">
               <h5 class="mb-0 text-primary">
@@ -191,6 +190,9 @@ export default {
 @media (min-width: 992px){
   .investments-details__content {
     background-color: $tertiary-20;
+  }
+  .investments-details__summary {
+    background-color: $tertiary-10;
   }
 }
 </style>
