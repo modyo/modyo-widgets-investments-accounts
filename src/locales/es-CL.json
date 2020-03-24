@@ -45,10 +45,10 @@
   "movements": {
     "amount": "Monto",
     "cash-balance": "Saldo en caja",
-    "export-excel": "Exportar excel",
+    "export-excel": "Exportar Excel",
     "fee-value": "Valor Cuota",
     "fees": "Cuotas",
-    "final": "final",
+    "final": "Final",
     "from-account": "Cuenta Origen",
     "initial": "Inicial",
     "movement-types": "Tipos de Movimientos",
