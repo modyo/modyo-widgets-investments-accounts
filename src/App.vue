@@ -150,6 +150,7 @@ export default {
     openConfigPanel() {
       this.config = true;
       this.statements = false;
+      this.$store.commit('SET_CURRENT_PAGE', 'settings');
     },
     closePanel() {
       this.config = false;
@@ -157,6 +158,7 @@ export default {
     openStatementsPanel() {
       this.config = false;
       this.statements = true;
+      this.$store.commit('SET_CURRENT_PAGE', 'statements');
     },
     closeStatementsPanel() {
       this.statements = false;
@@ -173,6 +175,7 @@ export default {
         this.activeSlide = 'movements-panel';
       }
       this.$store.commit('SET_SHOW_PANEL', true);
+      this.$store.commit('SET_CURRENT_PAGE', slug);
     },
     setActiveAccount(account) {
       this.activeAccount = account;

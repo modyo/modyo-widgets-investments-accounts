@@ -47,6 +47,7 @@
         <a
           href="#"
           class="btn btn-secondary btn-block"
+          :class="currentPage==='investments' ? 'active' : false"
           @click.prevent="$emit('goto', 'investments')">{{ $t('summary-resume.investments-btn') }}
           <font-awesome-icon
             icon="chevron-right"
@@ -55,6 +56,7 @@
         <a
           href="#"
           class="btn btn-secondary btn-block"
+          :class="currentPage==='movements' ? 'active' : false"
           @click.prevent="$emit('goto', 'movements')">{{ $t('summary-resume.movements-btn') }}
           <font-awesome-icon
             icon="chevron-right"
@@ -63,6 +65,7 @@
         <a
           href="#"
           class="btn btn-secondary btn-block"
+          :class="currentPage==='statements' ? 'active' : false"
           @click.prevent="$emit('statements')">{{ $t('summary-resume.statements-btn') }}
           <font-awesome-icon
             icon="chevron-right"
@@ -86,6 +89,7 @@
           <a
             href="#"
             class="btn border btn-block"
+            :class="currentPage==='settings' ? 'btn-primary text-white' : false"
             @click.prevent="$emit('config')">
             <font-awesome-icon
               icon="cog"
@@ -116,6 +120,9 @@ export default {
     },
     cash() {
       return this.account.products.find((product) => product.name === 'Caja');
+    },
+    currentPage() {
+      return this.$store.state.currentPage;
     },
   },
 };

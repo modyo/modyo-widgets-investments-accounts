@@ -11,6 +11,7 @@ export default new Vuex.Store({
     modalData: null,
     indicators: {},
     showPanel: false,
+    currentPage: '',
   },
   mutations: {
     STOP_LOADING(state) {
@@ -31,6 +32,10 @@ export default new Vuex.Store({
 
     SET_SHOW_PANEL(state, data) {
       state.showPanel = data;
+    },
+
+    SET_CURRENT_PAGE(state, data) {
+      state.currentPage = data;
     },
   },
   actions: {
