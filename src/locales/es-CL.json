@@ -1,4 +1,7 @@
 {
+  "commons": {
+    "back": "Volver"
+  },
   "investment-details": {
     "current-investment": "Inversión Actual",
     "distribution": "Distribución",
@@ -102,8 +105,5 @@
     "pay-btn": "Abonar",
     "statements-btn": "Cartolas",
     "title": "Resumen"
-  },
-  "ui": {
-    "back": "Volver"
   }
 }

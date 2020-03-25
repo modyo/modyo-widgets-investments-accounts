@@ -10,7 +10,7 @@
         <font-awesome-icon
           icon="chevron-left"
           size="sm"
-          class="mr-2" /> Volver</a>
+          class="mr-2" /> {{ $t('commons.back') }}</a>
       <h4 class="mb-0 mt-3 mt-lg-0 text-primary">
         {{ $t('statements.title') }}
       </h4>

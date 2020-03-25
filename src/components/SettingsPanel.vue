@@ -17,7 +17,7 @@
         <font-awesome-icon
           icon="chevron-left"
           size="sm"
-          class="mr-2" /> Volver</a>
+          class="mr-2" /> {{ $t('commons.back') }}</a>
       <h4 class="mb-0 text-primary mt-3 mt-lg-0">
         {{ $t('settings-panel.title') }}
       </h4>

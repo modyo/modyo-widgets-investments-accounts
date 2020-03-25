@@ -8,7 +8,7 @@
         <font-awesome-icon
           icon="chevron-left"
           size="sm"
-          class="mr-2" /> Volver</a>
+          class="mr-2" /> {{ $t('commons.back') }}</a>
       <h4 class="mb-0 text-primary">
         {{ $t('investment-details.title') }}
       </h4>
