@@ -38,7 +38,8 @@
                 target="_blank"
                 class="btn btn-secondary">
                 <font-awesome-icon
-                  icon="file-pdf" />
+                  icon="file-pdf"
+                  class="mr-2" />
                 {{ $t('statements.download') }}
               </a>
             </td>

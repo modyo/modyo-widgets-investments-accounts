@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="d-flex justify-content-between px-4 py-3 border-bottom">
+    <div class="d-flex flex-column flex-lg-row justify-content-between px-4 pb-4 py-lg-3 border-bottom">
       <a
         href="#"
-        class="mr-3"
+        class="mr-3 mb-3 mb-lg-0"
         @click.prevent="closePanel">
         <font-awesome-icon
           icon="chevron-left"
@@ -15,18 +15,20 @@
     </div>
     <div class="row no-gutters">
       <div class="col-lg-3 p-4 border-right">
-        <select
-          id="investments"
-          class="form-control d-block d-lg-none mb-3"
-          @change="changeActiveProduct($event.target.value)">
-          <option
-            v-for="product in products"
-            :key="product.id"
-            :value="product.slug"
-            :selected="investmentType === product.slug">
-            {{ product.name }}
-          </option>
-        </select>
+        <multiselect
+          v-model="selectedProduct"
+          class="d-lg-none"
+          :options="products"
+          :multiple="false"
+          :group-select="false"
+          track-by="name"
+          label="name"
+          :searchable="false"
+          select-label=""
+          deselect-label=""
+          selected-label=""
+          :allow-empty="false"
+          @input="changeActiveProduct($event.slug)" />
         <ul class="nav nav-pills flex-column d-none d-lg-flex">
           <li
             v-for="(product,index) in products"
@@ -125,7 +127,7 @@
 </template>
 
 <script>
-
+import Multiselect from 'vue-multiselect';
 import InvestmentItem from './InvestmentItem.vue';
 
 export default {
@@ -134,6 +136,7 @@ export default {
 
   components: {
     'investment-item': InvestmentItem,
+    Multiselect,
   },
   props: {
     account: {
@@ -148,6 +151,7 @@ export default {
   data() {
     return {
       activeProduct: {},
+      selectedProduct: null,
     };
   },
   computed: {
@@ -170,6 +174,9 @@ export default {
       this.setActiveProduct();
     },
   },
+  created() {
+    [this.selectedProduct] = this.products;
+  },
   methods: {
     changeActiveProduct(value) {
       this.$emit('change-investment-type', value);
@@ -183,6 +190,8 @@ export default {
   },
 };
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';

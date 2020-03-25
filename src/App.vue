@@ -13,19 +13,19 @@
       v-else
       class="accounts__container container p-0">
       <div class="">
-        <div class="d-block d-lg-none">
-          <select
-            id="account"
+        <div class="d-block d-lg-none p-4">
+          <multiselect
             v-model="activeAccount"
-            class="form-control"
-            name="account">
-            <option
-              v-for="account in accounts"
-              :key="account.id"
-              :value="account">
-              {{ account.name }}
-            </option>
-          </select>
+            :options="accounts"
+            :multiple="false"
+            :group-select="false"
+            track-by="name"
+            label="name"
+            :searchable="false"
+            select-label=""
+            deselect-label=""
+            selected-label=""
+            :allow-empty="false" />
         </div>
         <ul class="accounts__nav nav d-none d-lg-flex">
           <li
@@ -87,7 +87,7 @@
 </template>
 
 <script>
-
+import Multiselect from 'vue-multiselect';
 import { getURLParams } from './helpers';
 
 import SummaryResume from './components/SummaryResume.vue';
@@ -108,6 +108,7 @@ export default {
     'investment-modal': InvestmentModal,
     'movements-panel': MovementsPanel,
     'statements-panel': StatementsPanel,
+    Multiselect,
   },
   data() {
     return {
@@ -196,10 +197,19 @@ export default {
 };
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style lang="scss" scoped>
 @import './scss/custom.scss';
 
+.accounts-app {
+  background-color: white;
+}
+
 @media (min-width: 992px) {
+  .accounts-app {
+    background-color: transparent;
+  }
   .accounts__container {
     background-color: white;
   }
