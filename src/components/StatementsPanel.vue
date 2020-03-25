@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="d-flex justify-content-between px-4 py-3 border-bottom bg-white">
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-between
+      px-4 py-lg-3 pt-0 pb-3 border-bottom bg-white">
       <a
         href="#"
         class="mr-3"
@@ -9,41 +11,53 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> Volver</a>
-      <h4 class="mb-0 text-primary">
+      <h4 class="mb-0 mt-3 mt-lg-0 text-primary">
         {{ $t('statements.title') }}
       </h4>
     </div>
-    <div class="mx-1 mb-1">
+    <div class="mx-lg-1 mx-4 mb-1 my-4 mt-lg-0">
       <div>
-        <table class="table mb-0 mt-1">
-          <thead>
+        <table class="table mb-0 mt-1 border-bottom">
+          <thead class="d-none d-lg-block">
             <tr>
               <td class="pl-4 bg-white rounded-top border-left border-right d-block">
                 {{ $t('statements.period') }}
               </td>
             </tr>
           </thead>
-          <tr
-            v-for="statement in statements"
-            :key="statement.id">
-            <td class="align-middle text-muted pl-4 bg-white border-left">
-              {{ statement.period | date('MM/yyyy') }}
-            </td>
-            <td class="align-middle bg-white">
-              {{ statement.name }}
-            </td>
-            <td class="text-right pr-4 bg-white border-right">
-              <a
-                :href="image_bl"
-                target="_blank"
-                class="btn btn-secondary">
-                <font-awesome-icon
-                  icon="file-pdf"
-                  class="mr-2" />
-                {{ $t('statements.download') }}
-              </a>
-            </td>
-          </tr>
+          <tbody class="border-left border-right">
+            <tr
+              v-for="statement in statements"
+              :key="statement.id">
+              <td class="d-none d-lg-table-cell align-middle text-muted pl-4 bg-white">
+                {{ statement.period | date('MM/yyyy') }}
+              </td>
+              <td class="align-middle bg-white pl-4 pl-lg-2">
+                {{ statement.name }}
+                <small class="d-block d-lg-none text-muted mt-1">{{ statement.period | date('MM/yyyy') }}</small>
+              </td>
+              <td class="text-right pr-4 bg-white align-middle">
+                <a
+                  :href="image_bl"
+                  target="_blank"
+                  class="btn btn-secondary d-none d-lg-inline-block">
+                  <font-awesome-icon
+                    icon="file-pdf"
+                    class="mr-2"
+                    size="lg" />
+                  {{ $t('statements.download') }}
+                </a>
+                <a
+                  :href="image_bl"
+                  target="_blank"
+                  class="btn btn-secondary d-lg-none p-2">
+                  <font-awesome-icon
+                    icon="file-download"
+                    size="lg" />
+                </a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

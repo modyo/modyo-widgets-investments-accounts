@@ -1,6 +1,8 @@
 <template id="account-movements-template">
   <div>
-    <div class="d-flex justify-content-between px-4 py-3 border-bottom">
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-between
+      px-4 py-lg-3 pt-0 pb-3 border-bottom">
       <a
         href="#"
         class="mr-3"
@@ -9,25 +11,17 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> Volver</a>
-      <h4 class="mb-0 text-primary">
+      <h4 class="mb-0 text-primary mt-3 mt-lg-0">
         {{ $t('movements.title') }}
       </h4>
     </div>
     <div class="row no-gutters">
       <div class="col-lg-4 border-right">
-        <div class="movements-panel__filters p-4">
+        <div class="movements-panel__filters p-lg-4 pt-4 px-4">
           <div class="movements-panel__filters-dates">
             <h4
-              class="d-flex justify-content-between text-primary">
+              class="text-primary d-none d-lg-block">
               <strong>{{ $t('movements.period') }}</strong>
-              <a
-                href="#"
-                class="d-inline-block d-lg-none"
-                @click="visibleFilters = false">
-                <font-awesome-icon
-                  icon="times"
-                  style="cursor: pointer" />
-              </a>
             </h4>
             <div class="datepicker mb-4">
               <vue-date-picker
@@ -46,8 +40,8 @@
                 <template #activator="{ date }">
                   <button
                     ref="activator"
-                    class="form-control btn btn-white border d-flex justify-content-between
-                    align-items-center"
+                    class="movements-panel__filter-date-btn form-control btn btn-white border
+                    d-flex justify-content-between align-items-center px-3 px-xl-3 text-left"
                     type="button">
                     <span class="text-capitalize">{{ date }}</span>
                     <font-awesome-icon
@@ -185,7 +179,7 @@
           </a>
         </div>
       </div>
-      <div class="col-lg-8 movements-panel__content p-1">
+      <div class="col-lg-8 movements-panel__content p-lg-1 px-4 mb-4 mb-lg-0">
         <div
           v-if="isLoading"
           class="spinner-border"
@@ -198,11 +192,12 @@
           <div
             v-if="!movements.length"
             class="d-flex flex-column justify-content-center p-4 h-100">
-            <h5 class="mb-0 text-center">
+            <h5 class="text-center">
               {{ $t('movements.no-movements') }}
             </h5>
-            <p class="text-muted text-center">
-              {{ $t('movements.select-other-period') }}
+            <p class="text-muted text-center mb-0">
+              <span class="d-none d-lg-block">{{ $t('movements.select-other-period-sidebar') }}</span>
+              <span class="d-lg-none">{{ $t('movements.select-other-period') }}</span>
             </p>
           </div>
           <div
@@ -211,22 +206,23 @@
             <div
               v-for="movement in movements"
               :key="movement.id"
-              class="movements-panel__row bg-white border-bottom">
+              class="movements-panel__row bg-white border-bottom mb-lg-1">
               <a
                 :href="'#movements-' + movement.id"
                 :aria-controls="'#movements-' + movement.id"
                 data-toggle="collapse"
                 aria-expanded="false"
-                class="row no-gutters collapsed py-2 px-4 btn d-flex rounded-0 position-relative"
+                class="row no-gutters collapsed py-2 px-lg-4 btn d-flex rounded-0 position-relative align-items-center"
                 tabindex="0">
-                <div class="col-lg-3 text-left"><span>{{ movement.date | date }}</span></div>
-                <div class="col-lg-6 text-left"><strong>{{ movement.description }}</strong></div>
-                <div class="col-lg-3 text-right">
+                <div class="col-3 text-left d-none d-lg-block"><span>{{ movement.date | date }}</span></div>
+                <div class="col-6 col-lg-5 text-left">{{ movement.description }}</div>
+                <div class="col-5 col-lg-3 text-right">
                   <span v-if="movement.type === 'CARGO'">-</span>
                   {{ movement.amount.valueString }}
+                </div>
+                <div class="col text-right">
                   <font-awesome-icon
-                    icon="chevron-up"
-                    class="ml-2" />
+                    icon="chevron-up" />
                 </div>
               </a>
               <div
@@ -326,10 +322,10 @@
 
           <div
             v-if="filterByAll && movements.length"
-            class="movements-panel__summary">
+            class="movements-panel__summary mt-3">
             <a
               href="#"
-              class="btn d-flex justify-content-between align-items-center px-4 py-3
+              class="btn d-flex justify-content-between align-items-center px-lg-4 py-3
               bg-tertiary rounded-0 position-relative text-white"
               @click.prevent="openSummary()">
               <h4 class="mb-0">
@@ -341,53 +337,73 @@
             <div
               v-if="activeSummary === true"
               class="movements-panel__summary-details border-top bg-white">
-              <h5 class="text-primary px-4 pt-4">
-                <span class="font-weight-light">{{ $t('movements.period') }}:</span>
+              <h5 class="text-primary px-lg-4 px-3 pt-4">
+                <span class="font-weight-light d-lg-inline-block d-block">{{ $t('movements.period') }}:</span>
                 {{ fromDate | date('MMMM yyyy') }}
                 {{ $t('movements.to') }}
                 {{ toDate | date('MMMM yyyy') }}
               </h5>
-              <div class="d-flex align-items-center border-bottom border-top px-4 py-2">
-                <div>
+              <div
+                class="d-flex flex-column flex-lg-row align-items-lg-center
+                border-bottom border-top px-lg-4 px-3 py-2">
+                <div class="mb-2 mb-lg-0">
                   {{ $t('movements.cash-balance') }}
                 </div>
-                <div class="ml-auto mr-4">
-                  <small class="d-block text-right">{{ $t('movements.initial') }}</small>
+                <div class="d-flex flex-row flex-lg-column ml-lg-auto mr-lg-4 align-items-center">
+                  <small class="d-block text-lg-right">
+                    {{ $t('movements.initial') }}<span class="d-lg-none mr-2">:</span>
+                  </small>
                   <p class="mb-0 text-right">
                     {{ summary.initialBalance.amount.value | currency }}
                   </p>
                 </div>
-                <div>
-                  <small class="d-block text-right">{{ $t('movements.final') }}</small>
+                <div class="d-flex flex-row flex-lg-column ml-lg-3 align-items-center">
+                  <small class="d-block text-lg-right">
+                    {{ $t('movements.final') }}<span class="d-lg-none mr-2">:</span>
+                  </small>
                   <p class="mb-0 text-right">
                     {{ summary.endBalance.amount.value | currency }}
                   </p>
                 </div>
               </div>
-              <div class="d-flex align-items-center px-4 py-2">
-                <div>
-                  Movimientos
+              <div
+                class="d-flex flex-column flex-lg-row align-items-lg-center
+                border-bottom border-top px-lg-4 px-3 py-2">
+                <div class="mb-2 mb-lg-0">
+                  {{ $t('movements.word') }}
                 </div>
-                <div class="ml-auto mr-4">
-                  <small class="d-block text-right">{{ $t('movements.payments') }}</small>
+                <div class="d-flex d-lg-block flex-row flex-lg-column ml-lg-auto mr-lg-4 align-items-center">
+                  <small class="d-block text-lg-right">
+                    {{ $t('movements.payments') }}<span class="d-lg-none mr-2">:</span>
+                  </small>
                   <p class="mb-0 text-right">
                     {{ summary.deposits.amount.value | currency }}
                   </p>
                 </div>
-                <div class="mr-4">
-                  <small class="d-block text-right">{{ $t('movements.transfers') }}</small>
+                <div class="d-flex d-lg-block flex-row flex-lg-column ml-lg-3 mr-lg-4 align-items-center">
+                  <small class="d-block text-lg-right">
+                    {{ $t('movements.transfers') }}<span class="d-lg-none mr-2">:</span>
+                  </small>
                   <p class="mb-0 text-right">
                     {{ summary.transfers.amount.value | currency }}
                   </p>
                 </div>
-                <div class="mr-4 text-right">
-                  <small class="d-block">{{ $t('movements.purchases') }}</small>
+                <div
+                  class="d-flex d-lg-block flex-row flex-lg-column ml-lg-3
+                  mr-lg-4 align-items-center text-lg-right">
+                  <small class="d-block">
+                    {{ $t('movements.purchases') }}<span class="d-lg-none mr-2">:</span>
+                  </small>
                   <p class="mb-0">
                     {{ summary.purchases.amount.value | currency }}
                   </p>
                 </div>
-                <div class="text-right">
-                  <small class="d-block">{{ $t('movements.sales') }}</small>
+                <div
+                  class="d-flex d-lg-block flex-row flex-lg-column ml-lg-3
+                  align-items-center text-lg-right">
+                  <small class="d-block">
+                    {{ $t('movements.sales') }}<span class="d-lg-none mr-2">:</span>
+                  </small>
                   <p class="mb-0">
                     {{ summary.sales.amount.value | currency }}
                   </p>
@@ -543,17 +559,33 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 .movements-panel__content {
-background-color: $tertiary-20;
-.movements-panel__row, .movements-panel__summary {
-  .btn.collapsed  {
-    z-index: 100;
-    .svg-inline--fa {
-      transform: rotate(180deg);
+  .movements-panel__row, .movements-panel__summary {
+    .btn.collapsed  {
+      .svg-inline--fa {
+        transform: rotate(180deg);
+      }
+    }
+    .movements-panel__row-details, .movements-panel__summary-details {
+      background-color: $tertiary-10;
     }
   }
-  .movements-panel__row-details, .movements-panel__summary-details {
-    background-color: $tertiary-10;
+}
+@media (max-width: 320px) {
+  .movements-panel__filters-dates {
+    .movements-panel__filter-date-btn {
+      font-size: .9rem;
+      line-height: .9rem;
+    }
   }
 }
+@media(min-width: 992px) {
+  .movements-panel__content {
+    background-color: $tertiary-20;
+    .movements-panel__row, .movements-panel__summary {
+      .btn.collapsed  {
+        z-index: 100;
+      }
+    }
+  }
 }
 </style>

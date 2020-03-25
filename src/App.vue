@@ -13,7 +13,7 @@
       v-else
       class="accounts__container container p-0">
       <div class="">
-        <div class="d-block d-lg-none p-4">
+        <div class="d-block d-lg-none p-lg-4 px-4 pt-4 pb-3">
           <multiselect
             v-model="activeAccount"
             :options="accounts"
@@ -44,7 +44,9 @@
         <div
           v-if="!showPanel"
           class="row no-gutters h-100">
-          <div class="col-lg-4">
+          <div
+            class="col-lg-4 d-lg-block"
+            :class="!config && !statements ? false : 'd-none'">
             <summary-resume
               :account="activeAccount"
               @statements="openStatementsPanel()"
@@ -54,6 +56,7 @@
           <div class="col-lg-8 accounts__investsments-summary">
             <investments-summary
               v-if="!config && !statements"
+              class="d-none d-lg-block"
               :account="activeAccount"
               :indicators="indicators"
               @goto="goToSlide" />
@@ -204,11 +207,13 @@ export default {
 
 .accounts-app {
   background-color: white;
+  min-height: 100%;
 }
 
 @media (min-width: 992px) {
   .accounts-app {
     background-color: transparent;
+    min-height: auto;
   }
   .accounts__container {
     background-color: white;

@@ -7,7 +7,9 @@
   </div>
 
   <div v-else>
-    <div class="d-flex justify-content-between px-4 py-3 border-bottom bg-white">
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-between
+      px-4 py-lg-3 pt-0 pb-3 border-bottom bg-white">
       <a
         href="#"
         class="mr-3"
@@ -16,7 +18,7 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> Volver</a>
-      <h4 class="mb-0 text-primary">
+      <h4 class="mb-0 text-primary mt-3 mt-lg-0">
         {{ $t('settings-panel.title') }}
       </h4>
     </div>
@@ -49,7 +51,7 @@
             class="custom-control-input">
           <label
             :for="input.id"
-            class="custom-control-label d-block">
+            class="custom-control-label d-block pr-4">
             {{ input.name }}
           </label>
         </div>

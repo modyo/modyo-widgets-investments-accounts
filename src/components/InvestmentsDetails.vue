@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex flex-column flex-lg-row justify-content-between px-4 pb-4 py-lg-3 border-bottom">
+    <div class="d-flex flex-column flex-lg-row justify-content-between px-4 pb-3 py-lg-3 border-bottom">
       <a
         href="#"
         class="mr-3 mb-3 mb-lg-0"
@@ -49,7 +49,7 @@
         </ul>
       </div>
       <div class="col-lg-9 investments-details__content">
-        <div class="p-4 border-bottom">
+        <div class="p-lg-4 px-4 pb-3 border-bottom">
           <div class="row no-gutters d-none d-lg-flex">
             <div class="col-lg-3" />
             <div
@@ -91,24 +91,25 @@
         </div>
         <div
           id="investments-accordion"
-          role="tablist">
+          role="tablist"
+          class="border-bottom">
           <investment-item
             v-for="item in activeProduct.elements"
             :key="item.id"
             :item="item" />
         </div>
-        <div class="investments-details__summary px-4 py-3 border-top">
+        <div class="investments-details__summary px-4 py-lg-3 py-4 mt-2 mt-lg-0">
           <div class="row no-gutters">
             <div class="col-lg-4 d-none d-lg-flex">
               <h5 class="mb-0 text-primary">
                 {{ $t('investment-details.summary') }}
               </h5>
             </div>
-            <div class="col col-lg-3 ml-auto text-right">
+            <div class="col col-lg-3 ml-auto text-left text-lg-right">
               <strong class="d-block">{{ activeProduct.amountTotalReturn.valueString }}</strong>
               <small>{{ $t('investment-details.utility-total-loss') }}</small>
             </div>
-            <div class="col col-lg-3 text-right">
+            <div class="col col-lg-3 text-center text-lg-right">
               <strong class="d-block">
                 {{ activeProduct.amount.valueString }}
               </strong>
@@ -118,6 +119,7 @@
               <strong class="d-block">
                 {{ activeProduct.amount.percentageString }}
               </strong>
+              <small>{{ $t('investment-details.distribution-total') }}</small>
             </div>
           </div>
         </div>

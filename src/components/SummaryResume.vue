@@ -72,7 +72,7 @@
             size="xs"
             class="ml-2" /></a>
 
-        <div class="row no-gutters mt-4">
+        <div class="row no-gutters mt-4 d-lg-flex d-none">
           <div class="col-lg-6 pr-lg-2">
             <a
               href="/privado/fondos-mutuos"
