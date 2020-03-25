@@ -12,34 +12,32 @@
     <div
       v-else
       class="accounts__container container p-0">
-      <div class="">
-        <div class="d-block d-lg-none p-lg-4 px-4 pt-4 pb-3">
-          <multiselect
-            v-model="activeAccount"
-            :options="accounts"
-            :multiple="false"
-            :group-select="false"
-            track-by="name"
-            label="name"
-            :searchable="false"
-            select-label=""
-            deselect-label=""
-            selected-label=""
-            :allow-empty="false" />
-        </div>
-        <ul class="accounts__nav nav d-none d-lg-flex">
-          <li
-            v-for="account in accounts"
-            :key="account.id"
-            class="nav-item">
-            <a
-              :class="{active: activeAccount.id == account.id}"
-              href="#"
-              class="nav-link px-4"
-              @click.prevent="setActiveAccount(account)">{{ account.name }}</a>
-          </li>
-        </ul>
+      <div class="d-block d-lg-none p-lg-4 px-4 pt-4 pb-3">
+        <multiselect
+          v-model="activeAccount"
+          :options="accounts"
+          :multiple="false"
+          :group-select="false"
+          track-by="name"
+          label="name"
+          :searchable="false"
+          select-label=""
+          deselect-label=""
+          selected-label=""
+          :allow-empty="false" />
       </div>
+      <ul class="accounts__nav nav d-none d-lg-flex">
+        <li
+          v-for="account in accounts"
+          :key="account.id"
+          class="nav-item">
+          <a
+            :class="{active: activeAccount.id == account.id}"
+            href="#"
+            class="nav-link px-4"
+            @click.prevent="setActiveAccount(account)">{{ account.name }}</a>
+        </li>
+      </ul>
       <div>
         <div
           v-if="!showPanel"
