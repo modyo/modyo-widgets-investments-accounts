@@ -15,7 +15,7 @@
         {{ $t('statements.title') }}
       </h4>
     </div>
-    <div class="mx-lg-1 mx-4 mb-1 my-4 mt-lg-0">
+    <div class="mx-lg-1 mx-4 my-4 mt-lg-0 mb-lg-1">
       <div>
         <table class="table mb-0 mt-1 border-bottom">
           <thead class="d-none d-lg-block">

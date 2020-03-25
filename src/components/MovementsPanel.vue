@@ -368,7 +368,7 @@
               </div>
               <div
                 class="d-flex flex-column flex-lg-row align-items-lg-center
-                border-bottom border-top px-lg-4 px-3 py-2">
+                border-bottom px-lg-4 px-3 py-2">
                 <div class="mb-2 mb-lg-0">
                   {{ $t('movements.word') }}
                 </div>
