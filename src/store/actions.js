@@ -1,6 +1,8 @@
 ﻿import axios from 'axios';
 
-const BASE_URL = 'https://api-bank.herokuapp.com';
+const LANG = window.liquid.lang;
+
+const BASE_URL = LANG === 'es-CL' ? 'https://api-bank.herokuapp.com' : 'https://dynamic-bank-api.herokuapp.com';
 
 export default {
   GET_ACCOUNTS(context) {
