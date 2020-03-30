@@ -1,9 +1,11 @@
 ﻿import axios from 'axios';
 
+const BASE_URL = 'https://api-bank.herokuapp.com';
+
 export default {
   GET_ACCOUNTS(context) {
     return new Promise(((resolve, reject) => {
-      axios.get('https://api-bank.herokuapp.com/api/v1/AccountDetail')
+      axios.get(`${BASE_URL}/api/v1/AccountDetail`)
         .then((response) => {
           context.commit('SET_ACCOUNTS', response.data.data);
           resolve(response.data.data);
