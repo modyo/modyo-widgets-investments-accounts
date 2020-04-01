@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import { date } from '../filters';
+import { date } from '@modyo/financial-commons';
 
 export default {
   name: 'InvestmentModal',
@@ -151,7 +151,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import "../scss/_variables.scss";
 
 .investment-modal__subtitle {
   background-color: $tertiary-10;

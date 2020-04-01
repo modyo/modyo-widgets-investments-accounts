@@ -65,8 +65,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { date } from '../filters';
+
+import { date } from '@modyo/financial-commons';
 
 export default {
   name: 'StatementsPanel',
@@ -99,17 +99,15 @@ export default {
   },
   methods: {
     fetchAccountStatements() {
-      const vm = this;
       this.isLoading = true;
-      axios.get('https://api-bank.herokuapp.com/api/v1/AccountStatement', {
-        params: {
-          id: this.accountId,
-        },
-      })
+      const params = {
+        id: this.accountId,
+      };
+      this.$store.dispatch('GET_ACCOUNT_STATEMENTS', params)
         .then(({ data }) => {
           const dato = data.data;
-          vm.statements = dato.account.statements;
-          vm.isLoading = false;
+          this.statements = dato.account.statements;
+          this.isLoading = false;
         }, (err) => err);
     },
   },

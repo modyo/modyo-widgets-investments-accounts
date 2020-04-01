@@ -1,5 +1,5 @@
 {
-  "name": "@modyo/investment-accounts",
+  "name": "@modyo/investments-accounts",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,7 +18,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "@mathieustan/vue-datepicker": "^0.2.3-rc.1",
-    "@modyo/financial-commons": "^1.0.3",
+    "@modyo/financial-commons": "^1.0.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.4",

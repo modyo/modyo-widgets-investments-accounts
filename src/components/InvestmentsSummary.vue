@@ -100,7 +100,7 @@
 
 <script>
 
-import currency from '../filters';
+import { currency } from '@modyo/financial-commons';
 
 export default {
 
@@ -121,10 +121,10 @@ export default {
       return this.$store.state.localCurrency;
     },
     cash() {
-      return this.account.products.find((product) => product.name === 'Caja');
+      return this.account.products.find((product) => product.slug === 'cash');
     },
     products() {
-      return this.account.products.filter((product) => product.name !== 'Caja');
+      return this.account.products.filter((product) => product.slug !== 'cash');
     },
     currencies() {
       return this.account.currencies;
@@ -137,22 +137,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import "../scss/_variables.scss";
 
 .investments-summary__progress {
   height: 3rem;
 }
 
-.investments-summary__product-list, .investments-summary__currency-list {
+.investments-summary__product-list,
+.investments-summary__currency-list {
   .list-group-item {
+    border-top: none;
+    border-right: none;
     border-bottom: 1px solid $tertiary-20;
     border-left: none;
-    border-right: none;
-    border-top: none;
+
     &:last-child {
       border-bottom: none;
     }
   }
+
   .list-stocks {
     border-left: 4px solid $stocks;
   }

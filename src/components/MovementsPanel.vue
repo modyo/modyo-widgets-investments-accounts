@@ -422,8 +422,8 @@ import { VueDatePicker } from '@mathieustan/vue-datepicker';
 import {
   startOfMonth, endOfMonth, subMonths, format,
 } from 'date-fns';
-import axios from 'axios';
-import currency, { date } from '../filters';
+
+import { currency, date } from '@modyo/financial-commons';
 
 export default {
 
@@ -534,16 +534,15 @@ export default {
 
     fetchAccountMovements() {
       this.isLoading = true;
+      const params = {
+        id: this.account.id,
+        fromDate: this.fromDate,
+        toDate: this.toDate,
+        filter: this.filterByAll,
+        filters: this.filterBy,
+      };
 
-      axios.get('https://api-bank.herokuapp.com/api/v1/AccountMovements', {
-        params: {
-          id: this.account.id,
-          fromDate: this.fromDate,
-          toDate: this.toDate,
-          filter: this.filterByAll,
-          filters: this.filterBy,
-        },
-      })
+      this.$store.dispatch('GET_ACCOUNT_MOVEMENTS', params)
         .then(({ data }) => {
           const dato = data.data;
           this.movements = dato.movements;
@@ -557,15 +556,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import "../scss/_variables.scss";
+
 .movements-panel__content {
-  .movements-panel__row, .movements-panel__summary {
+  .movements-panel__row,
+  .movements-panel__summary {
     .btn.collapsed  {
       .svg-inline--fa {
         transform: rotate(180deg);
       }
     }
-    .movements-panel__row-details, .movements-panel__summary-details {
+
+    .movements-panel__row-details,
+    .movements-panel__summary-details {
       background-color: $tertiary-10;
     }
   }
@@ -578,10 +581,12 @@ export default {
     }
   }
 }
-@media(min-width: 992px) {
+@media (min-width: 992px) {
   .movements-panel__content {
     background-color: $tertiary-20;
-    .movements-panel__row, .movements-panel__summary {
+
+    .movements-panel__row,
+    .movements-panel__summary {
       .btn.collapsed  {
         z-index: 100;
       }

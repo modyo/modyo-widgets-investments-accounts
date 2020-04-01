@@ -28,13 +28,17 @@
       </div>
       <table class="table border-bottom mb-0">
         <tr>
-          <td class="pl-4">{{ cash.name }}</td>
+          <td class="pl-4">
+            {{ cash.name }}
+          </td>
           <td class="pr-4 text-right">
             <strong class="blue">{{ cash.amount.valueString }}</strong>
           </td>
         </tr>
         <tr>
-          <td class="pl-4">{{ cash.details[0].name }}</td>
+          <td class="pl-4">
+            {{ cash.details[0].name }}
+          </td>
           <td
             class="pr-4 text-right">
             <strong class="blue">
@@ -103,7 +107,7 @@
 
 <script>
 
-import { date } from '../filters';
+import { date } from '@modyo/financial-commons';
 
 export default {
   name: 'SummaryResume',
@@ -119,7 +123,7 @@ export default {
       return this.$store.state.localCurrency;
     },
     cash() {
-      return this.account.products.find((product) => product.name === 'Caja');
+      return this.account.products.find((product) => product.slug === 'cash');
     },
     currentPage() {
       return this.$store.state.currentPage;

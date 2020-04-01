@@ -43,18 +43,13 @@
         v-for="input in config.notifications"
         :key="input.id"
         class="mb-2">
-        <div class="settings__checkbox custom-control custom-checkbox">
-          <input
-            :id="input.id"
-            v-model="input.state"
-            type="checkbox"
-            class="custom-control-input">
-          <label
-            :for="input.id"
-            class="custom-control-label d-block pr-4">
-            {{ input.name }}
-          </label>
-        </div>
+        <m-switch-button
+          :id="input.id"
+          v-model="input.state"
+          active-color="#53c737"
+          class="my-3">
+          {{ input.name }}
+        </m-switch-button>
       </div>
       <div class="text-right mt-4">
         <button class="btn btn-primary btn-block">
@@ -66,8 +61,13 @@
 </template>
 
 <script>
+import { MSwitchButton } from '@modyo/financial-commons';
+
 export default {
   name: 'SettingsPanel',
+  components: {
+    MSwitchButton,
+  },
   props: {
     account: {
       type: Object,
@@ -98,10 +98,12 @@ export default {
 <style lang="scss" scoped>
 .settings__checkbox {
   padding-left: 0;
+
   .custom-control-label {
-    &:before, &:after {
-      left: auto;
+    &::before,
+    &::after {
       right: 0;
+      left: auto;
     }
   }
 }

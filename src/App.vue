@@ -89,7 +89,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-import { getURLParams } from './helpers';
+import { getURLParams } from '@modyo/financial-commons';
 
 import SummaryResume from './components/SummaryResume.vue';
 import SettingsPanel from './components/SettingsPanel.vue';
@@ -201,23 +201,28 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss" scoped>
-@import './scss/custom.scss';
+@import "./scss/custom.scss";
 
 .accounts-app {
-  background-color: white;
   min-height: 100%;
+
+  background-color: #fff;
 }
 
 @media (min-width: 992px) {
   .accounts-app {
-    background-color: transparent;
     min-height: auto;
+
+    background-color: transparent;
   }
+
   .accounts__container {
-    background-color: white;
+    background-color: #fff;
   }
+
   .accounts__nav {
     border-bottom: 1px solid $gray-300;
+
     .nav-item {
       .nav-link {
         &.active {
@@ -227,6 +232,7 @@ export default {
       }
     }
   }
+
   .accounts__investsments-summary {
     background-color: $tertiary-20;
   }

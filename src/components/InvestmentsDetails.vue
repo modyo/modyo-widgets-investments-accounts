@@ -161,7 +161,7 @@ export default {
       return this.$store.state.localCurrency;
     },
     products() {
-      return this.account.products.filter((product) => product.name !== 'Caja');
+      return this.account.products.filter((product) => product.slug !== 'cash');
     },
     currencies() {
       return this.account.currencies;
@@ -196,12 +196,13 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import "../scss/_variables.scss";
 
 @media (min-width: 992px){
   .investments-details__content {
     background-color: $tertiary-20;
   }
+
   .investments-details__summary {
     background-color: $tertiary-10;
   }
