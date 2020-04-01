@@ -5,13 +5,13 @@
     tabindex="-1"
     role="dialog">
     <div
-      class="modal-dialog modal-lg"
+      class="modal-dialog modal-dialog-centered modal-lg"
       role="document">
       <div
         v-if="item"
         class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">
+          <h5 class="modal-title text-primary">
             {{ item.name }}
           </h5>
           <button
@@ -22,22 +22,22 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <h4
+        <div class="modal-body p-0">
+          <h5
             v-if="item.slug === 'stock'"
-            class="mb-4">
+            class="text-primary py-4 px-3 mb-0 investment-modal__subtitle">
             {{ $t('investment-details.modal.title.buy-sell-historical') }}
-          </h4>
-          <h4
+          </h5>
+          <h5
             v-if="item.slug === 'mutual-fund'"
-            class="mb-4">
+            class="text-primary py-4 px-3 mb-0 investment-modal__subtitle">
             {{ $t('investment-details.modal.title.input-rescue-historical') }}
-          </h4>
+          </h5>
 
           <table class="table text-right table-detail">
             <thead>
               <tr>
-                <th class="text-center">
+                <th class="text-center pl-3">
                   {{ $t('investment-details.modal.date') }}
                 </th>
                 <th v-if="item.slug === 'stock'">
@@ -59,10 +59,14 @@
                   {{ $t('investment-details.modal.current-value') }}
                 </th>
                 <th>{{ $t('investment-details.modal.initial-investment') }}</th>
-                <th v-if="item.slug === 'stock'">
+                <th
+                  v-if="item.slug === 'stock'"
+                  class="pr-3">
                   {{ $t('investment-details.modal.market-value') }}
                 </th>
-                <th v-if="item.slug === 'mutual-fund'">
+                <th
+                  v-if="item.slug === 'mutual-fund'"
+                  class="pr-3">
                   {{ $t('investment-details.modal.current-valorization') }}
                 </th>
               </tr>
@@ -125,7 +129,7 @@
 </template>
 
 <script>
-import { date } from '../filters';
+import { date } from '@modyo/financial-commons';
 
 export default {
   name: 'InvestmentModal',
@@ -146,5 +150,10 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+@import "../scss/_variables.scss";
+
+.investment-modal__subtitle {
+  background-color: $tertiary-10;
+}
 </style>

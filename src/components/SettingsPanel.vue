@@ -1,61 +1,73 @@
 <template>
   <div
     v-if="loadingStatus"
-    class="loading">
-    <div class="loading-ico" />
+    class="spinner-border"
+    role="status">
+    <span class="sr-only">Loading...</span>
   </div>
 
   <div v-else>
     <div
-      class="close"
-      @click.prevent="$emit('closepanel')">
-      <font-awesome-icon
-        icon="times"
-        style="cursor: pointer" />
-    </div>
-    <h3 class="mb-4">
-      {{ $t('settings-panel.title') }}
-    </h3>
-    <div class="form-group mb-4">
-      <label for="account-name">{{ $t('settings-panel.account-name-lbl') }}</label>
-      <input
-        id="account-name"
-        v-model="config.name"
-        type="text"
-        class="form-control">
+      class="d-flex flex-column flex-lg-row justify-content-between
+      px-4 py-lg-3 pt-0 pb-3 border-bottom bg-white">
+      <a
+        href="#"
+        class="mr-3"
+        @click.prevent="$emit('closepanel')">
+        <font-awesome-icon
+          icon="chevron-left"
+          size="sm"
+          class="mr-2" /> {{ $t('commons.back') }}</a>
+      <h4 class="mb-0 text-primary mt-3 mt-lg-0">
+        {{ $t('settings-panel.title') }}
+      </h4>
     </div>
 
-    <div class="text-right mb-5">
-      <button class="btn btn-sm btn-primary">
-        {{ $t('settings-panel.update-btn') }}
-      </button>
-    </div>
-
-    <p><strong>{{ $t('settings-panel.email-notifications-title') }}:</strong></p>
-    <div
-      v-for="input in config.notifications"
-      :key="input.id"
-      class="d-flex justify-content-between mb-2">
-      <p class="mb-0">
-        {{ input.name }}
-      </p>
-      <div class="custom-control custom-checkbox">
+    <div class="p-4">
+      <div class="form-group mb-4">
+        <label
+          for="account-name"
+          class="text-primary mb-2">
+          <strong>{{ $t('settings-panel.account-name-lbl') }}</strong>
+        </label>
         <input
+          id="account-name"
+          v-model="config.name"
+          type="text"
+          class="form-control">
+      </div>
+      <p class="text-primary mb-2">
+        <strong>{{ $t('settings-panel.email-notifications-title') }}:</strong>
+      </p>
+      <div
+        v-for="input in config.notifications"
+        :key="input.id"
+        class="mb-2">
+        <m-switch-button
           :id="input.id"
           v-model="input.state"
-          type="checkbox"
-          class="custom-control-input">
-        <label
-          :for="input.id"
-          class="custom-control-label" />
+          active-color="#53c737"
+          class="my-3">
+          {{ input.name }}
+        </m-switch-button>
+      </div>
+      <div class="text-right mt-4">
+        <button class="btn btn-primary btn-block">
+          {{ $t('settings-panel.update-btn') }}
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { MSwitchButton } from '@modyo/financial-commons';
+
 export default {
   name: 'SettingsPanel',
+  components: {
+    MSwitchButton,
+  },
   props: {
     account: {
       type: Object,
@@ -82,3 +94,17 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.settings__checkbox {
+  padding-left: 0;
+
+  .custom-control-label {
+    &::before,
+    &::after {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+</style>

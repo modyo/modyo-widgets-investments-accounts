@@ -2,38 +2,54 @@
 
 // Color system
 
-$white: #FFF;
-$gray-100: #F8F9FA;
-$gray-200: #E9ECEF;
-$gray-300: #DEE2E6;
-$gray-400: #CED4DA;
-$gray-500: #ADB5BD;
-$gray-600: #6C757D;
-$gray-700: #495057;
-$gray-800: #343A40;
-$gray-900: #212529;
-$black: #000;
-$blue: #007BFF;
-$lightblue: #0587D6;
-$lightblue-dark: #0468A4;
-$indigo: #6610F2;
-$purple: #6F42C1;
-$pink: #E83E8C;
-$red: #DC3545;
-$orange: #FD7E14;
-$yellow: #FFC107;
-$green: #28A745;
-$green-dark: #9DC541;
-$teal: #20C997;
-$cyan: #17A2B8;
-$primary: $blue;
-$secondary: $gray-600;
-$success: $green;
-$info: $cyan;
-$warning: $yellow;
-$danger: $red;
-$light: $gray-100;
-$dark: $gray-800;
+$stocks: #34ADE5;
+$mutual-funds: #0B4279;
+
+$primary-10: #ebedef;
+$primary-20: #d6dbdf;
+$primary-40: #aeb6bf;
+$primary-60: #85929e;
+$primary-80: #5d6d7e;
+$primary-100: #34495e;
+$primary-dark: #2e4553;
+$secondary-10: #eff0f1;
+$secondary-20: #e0e2e3;
+$secondary-40: #c1c5c7;
+$secondary-60: #a1a8aa;
+$secondary-80: #828b8e;
+$secondary-100: #636e72;
+$secondary-dark: #515a5e;
+$tertiary-10: #f7f8f9;
+$tertiary-20: #f0f2f3;
+$tertiary-40: #e0e5e7;
+$tertiary-60: #d1d8db;
+$tertiary-80: #c1cbcf;
+$tertiary-100: #b2bec3;
+$tertiary-dark: #a3afb4;
+$red: #df0000;
+$yellow: #ffc24a;
+$green: #53c737;
+$primary: $primary-100;
+$secondary: $secondary-100;
+$light: $secondary-10;
+$dark: $secondary-dark;
+
+$start-color: #f0f2f3;
+$end-color: rgba(240, 242, 243, 0);
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret: true;
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-prefers-reduced-motion-media-query: true;
+$enable-grid-classes: true;
+$enable-pointer-cursor-for-buttons: true;
+$enable-responsive-font-sizes: false;
 
 // Spacing
 //
@@ -46,9 +62,8 @@ $spacer: 1rem;
 //
 // Settings for the `<body>` element.
 
-$body-bg: $white;
-$body-color: $gray-900;
-
+$body-bg: $primary-10;
+$body-color: $secondary-100;
 
 // Links
 //
@@ -57,23 +72,37 @@ $body-color: $gray-900;
 $link-decoration: none;
 $link-hover-decoration: underline;
 
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-radius: .35rem;
+$border-radius-lg: .45rem;
+$border-radius-sm: .25rem;
+$border-color: $primary-10;
+
 // Paragraphs
 //
 // Style p element.
 
 $paragraph-margin-bottom: 1rem;
 
-
 // Typography
 //
 // Font, line-height, and color
-
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700|Ubuntu:300,400,500,700&display=swap");
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-family-sans-serif: "Ubuntu", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: "Ubuntu Mono", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base: $font-family-sans-serif;
 // stylelint-enable value-keyword-case
 
 $font-size-base: 1rem; // Assumes the browser default, typically `16px`
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * .875;
+
+// Modals
+$modal-fade-transform:              translate(0, 100%);
+$modal-show-transform:              none;
+$modal-transition:                  transform 150ms ease-out;
+$modal-scale-transform:             scale(1.02);

@@ -1,49 +1,72 @@
 <template>
-  <div class="mask-statements">
-    <h3 class="mb-5">
-      {{ $t('statements.title') }}
-      <div
-        class="close"
+  <div>
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-between
+      px-4 py-lg-3 pt-0 pb-3 border-bottom bg-white">
+      <a
+        href="#"
+        class="mr-3"
         @click.prevent="$emit('closestatementspanel')">
         <font-awesome-icon
-          icon="times"
-          style="cursor: pointer" />
+          icon="chevron-left"
+          size="sm"
+          class="mr-2" /> {{ $t('commons.back') }}</a>
+      <h4 class="mb-0 mt-3 mt-lg-0 text-primary">
+        {{ $t('statements.title') }}
+      </h4>
+    </div>
+    <div class="mx-lg-1 mx-4 my-4 mt-lg-0 mb-lg-1">
+      <div>
+        <table class="table mb-0 mt-1 border-bottom">
+          <thead class="d-none d-lg-block">
+            <tr>
+              <td class="pl-4 bg-white rounded-top border-left border-right d-block">
+                {{ $t('statements.period') }}
+              </td>
+            </tr>
+          </thead>
+          <tbody class="border-left border-right">
+            <tr
+              v-for="statement in statements"
+              :key="statement.id">
+              <td class="d-none d-lg-table-cell align-middle text-muted pl-4 bg-white">
+                {{ statement.period | date('MM/yyyy') }}
+              </td>
+              <td class="align-middle bg-white pl-4 pl-lg-2">
+                {{ statement.name }}
+                <small class="d-block d-lg-none text-muted mt-1">{{ statement.period | date('MM/yyyy') }}</small>
+              </td>
+              <td class="text-right pr-4 bg-white align-middle">
+                <a
+                  :href="image_bl"
+                  target="_blank"
+                  class="btn btn-secondary d-none d-lg-inline-block">
+                  <font-awesome-icon
+                    icon="file-pdf"
+                    class="mr-2"
+                    size="lg" />
+                  {{ $t('statements.download') }}
+                </a>
+                <a
+                  :href="image_bl"
+                  target="_blank"
+                  class="btn btn-secondary d-lg-none p-2">
+                  <font-awesome-icon
+                    icon="file-download"
+                    size="lg" />
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </h3>
-
-    <div class="table-statements">
-      <div class="header-table-statements d-flex">
-        {{ $t('statements.period') }}
-      </div>
-      <table class="table table-sm-block">
-        <tr
-          v-for="statement in statements"
-          :key="statement.id">
-          <td class="align-middle text-muted">
-            {{ statement.period | date('MM/yyyy') }}
-          </td>
-          <td class="align-middle">
-            {{ statement.name }}
-          </td>
-          <td class="text-right">
-            <a
-              :href="image_bl"
-              target="_blank"
-              class="btn btn-secondary">
-              <font-awesome-icon
-                icon="file-pdf" />
-              {{ $t('statements.download') }}
-            </a>
-          </td>
-        </tr>
-      </table>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { date } from '../filters';
+
+import { date } from '@modyo/financial-commons';
 
 export default {
   name: 'StatementsPanel',
@@ -76,17 +99,15 @@ export default {
   },
   methods: {
     fetchAccountStatements() {
-      const vm = this;
       this.isLoading = true;
-      axios.get('https://api-bank.herokuapp.com/api/v1/AccountStatement', {
-        params: {
-          id: this.accountId,
-        },
-      })
+      const params = {
+        id: this.accountId,
+      };
+      this.$store.dispatch('GET_ACCOUNT_STATEMENTS', params)
         .then(({ data }) => {
           const dato = data.data;
-          vm.statements = dato.account.statements;
-          vm.isLoading = false;
+          this.statements = dato.account.statements;
+          this.isLoading = false;
         }, (err) => err);
     },
   },
