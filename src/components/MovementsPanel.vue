@@ -27,6 +27,7 @@
               <vue-date-picker
                 v-model="dates"
                 type="month"
+                :name="$t('movements.period')"
                 :format="monthFormat"
                 :range="true"
                 :max-date="maxMonth"
