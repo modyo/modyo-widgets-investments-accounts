@@ -33,9 +33,9 @@
                 :locale="{lang: 'es'}"
                 :validate="true"
                 fullscreen-mobile
-                :format-header="monthFormat"
+                :format-header="'MMMM YYYY'"
                 range-header-text="De %d a %d"
-                range-input-text="De %d a %d"
+                range-input-text="%d - %d"
                 @input="applyDates">
                 <template #activator="{ date }">
                   <button
@@ -444,7 +444,7 @@ export default {
       activeSummary: false,
       monthPeriod: true,
       visibleFilters: false,
-      monthFormat: 'MMMM YYYY',
+      monthFormat: 'MMM YYYY',
       movements: [],
       summary: {},
       filterBy: [
