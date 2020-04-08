@@ -2,7 +2,7 @@
   <div>
     <div
       class="d-flex flex-column flex-lg-row justify-content-between
-      px-4 py-lg-3 pt-0 pb-3 border-bottom">
+      px-0 px-lg-4 mx-4 mx-lg-0 py-lg-3 pt-0 pb-3 border-bottom">
       <a
         href="#"
         class="mr-3"
@@ -16,7 +16,7 @@
       </h4>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-4 border-right">
+      <div class="acccounts__movements-col-filters col-lg-4">
         <div class="movements-panel__filters p-lg-4 pt-4 px-4">
           <div class="movements-panel__filters-dates">
             <h4
@@ -582,6 +582,9 @@ export default {
   }
 }
 @media (min-width: 992px) {
+  .acccounts__movements-col-filters {
+    border-right: 1px solid $primary-10;
+  }
   .movements-panel__content {
     background-color: $tertiary-20;
 

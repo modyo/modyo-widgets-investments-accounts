@@ -1,5 +1,5 @@
 <template>
-  <div class="accounts__summary-sidebar border-right">
+  <div class="accounts__summary-sidebar">
     <div class="p-lg-4 px-4 pb-4">
       <h4 class="mb-0 text-primary d-flex justify-content-between">
         <strong>{{ account.name }}</strong>
@@ -131,3 +131,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../scss/_variables.scss";
+
+@media (min-width: 992px){
+  .accounts__summary-sidebar{
+    border-right: 1px solid $primary-10;
+  }
+}
+</style>
