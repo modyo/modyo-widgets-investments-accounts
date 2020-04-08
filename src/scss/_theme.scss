@@ -19,24 +19,6 @@ p {
   color: $primary-80;
 }
 
-.icon-centered {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  &.right-3 {
-    right: 1 * $spacer;
-  }
-  &.right-4 {
-    right: 1 .5 * $spacer;
-  }
-  &.left-3 {
-    left: 1 * $spacer;
-  }
-  &.left-4 {
-    left: 1.5 * $spacer;
-  }
-}
-
 .btn-primary {
  &:disabled {
    opacity: 1;
@@ -124,108 +106,15 @@ p {
   }
 }
 
-.radio-pill {
-  position: relative;
-  margin: 0;
-  overflow: hidden;
-  input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-    &:checked ~ label {
-      background-color: $primary;
-    }
-    &:hover ~ label , &:focus ~ label {
-      background-color: $primary-60;
-    }
-    &:checked:hover ~ label , &:focus ~ label {
-      background-color: $primary;
-    }
-  }
-  label {
-    margin: 0;
-    padding: .5rem 1rem;
-    color: white;
-    background-color: $secondary-20;
-  }
-}
-
-.radio-pills-group {
-  margin: 1rem 0;
-  .radio-pill {
-    &:first-child label {
-      border-radius: .35rem 0 0 .35rem;
-    }
-    &:last-child label {
-      border-radius: 0 .35rem .35rem 0;
-    }
-  }
-}
-
-.checkbox-pill {
-  position: relative;
-  margin: 0;
-  overflow: hidden;
-  input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-    &:checked ~ label {
-      background-color: $primary;
-      .svg-inline--fa {
-        opacity: 1;
-      }
-    }
-    &:hover ~ label {
-      background-color: $primary-60;
-    }
-    &:checked:hover ~ label {
-      background-color: $primary-dark;
-    }
-    &:disabled ~ label {
-      background-color: $primary-10;
-    }
-  }
-  label {
-    margin: 0;
-    padding: .5rem;
-    color: white;
-    background-color: $secondary-20;
-    border-radius: .35rem;
-    .svg-inline--fa {
-      font-size: .75em;
-      margin-right: .25rem;
-      opacity: .5;
-    }
-  }
-}
-
 @media (max-width: 575.98px){
   .multiselect .multiselect__placeholder, .multiselect .multiselect__single, .multiselect .multiselect__input {
     font-size: 0.8rem;
   }
-  .checkbox-pill {
-    input {
-      &:checked ~ label {
-        background-color: $secondary;
-      }
-      &:disabled ~ label {
-        background-color: $primary-10;
-      }
-      &:hover ~ label {
-        background-color: $secondary-20;
-      }
-      &:checked:hover ~ label {
-        background-color: $secondary;
-      }
-    }
+}
+
+.switch-button-control {
+  display: flex;
+  .switch-button-label {
+    flex: 1 1 auto !important;
   }
 }
