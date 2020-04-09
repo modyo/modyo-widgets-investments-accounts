@@ -79,13 +79,15 @@
         <div class="row no-gutters mt-4 d-lg-flex d-none">
           <div class="col-lg-6 pr-lg-2">
             <a
-              href="/privado/fondos-mutuos"
-              class="btn btn-primary btn-block">{{ $t('summary-resume.invest-btn') }}</a>
+              href="#"
+              class="btn btn-primary btn-block"
+              @click.prevent="">{{ $t('summary-resume.invest-btn') }}</a>
           </div>
           <div class="col-lg-6 pl-lg-2 pt-2 pt-lg-0">
             <a
-              href="/privado/abonar"
-              class="btn btn-primary btn-block">{{ $t('summary-resume.pay-btn') }}</a>
+              href="#"
+              class="btn btn-primary btn-block"
+              @click.prevent="">{{ $t('summary-resume.pay-btn') }}</a>
           </div>
         </div>
 
