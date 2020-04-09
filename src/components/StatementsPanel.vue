@@ -38,7 +38,7 @@
               </td>
               <td class="text-right pr-4 bg-white align-middle">
                 <a
-                  :href="image_bl"
+                  :href="statement.document"
                   target="_blank"
                   class="btn btn-secondary d-none d-lg-inline-block">
                   <font-awesome-icon
@@ -48,7 +48,7 @@
                   {{ $t('statements.download') }}
                 </a>
                 <a
-                  :href="image_bl"
+                  :href="statement.document"
                   target="_blank"
                   class="btn btn-secondary d-lg-none p-2">
                   <font-awesome-icon
@@ -81,7 +81,6 @@ export default {
     return {
       isLoading: true,
       statements: [],
-      image_bl: 'https://cloud.modyocdn.com/uploads/9dd6210d-1af4-4bce-a562-ad0fe38a214d/original/Business_letter.pdf',
     };
   },
   computed: {
