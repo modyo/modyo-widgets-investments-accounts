@@ -8,8 +8,9 @@
         class="d-flex flex-fill flex-column align-items-center justify-content-center px-4 text-center mb-4 mb-lg-0">
         <h4>{{ $t('investments-summary.empty-amount') }}</h4>
         <a
-          href="/privado/abonar"
-          class="btn btn-primary btn-lg px-5 mt-3">{{ $t('investments-summary.pay') }}</a>
+          href="#"
+          class="btn btn-primary btn-lg px-5 mt-3"
+          @click.prevent="">{{ $t('investments-summary.pay') }}</a>
       </div>
       <div
         v-else
@@ -137,7 +138,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
 .investments-summary__progress {
   height: 3rem;
