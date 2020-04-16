@@ -1,5 +1,5 @@
 <template>
-  <div class="accounts__summary-sidebar border-right">
+  <div class="accounts__summary-sidebar">
     <div class="p-lg-4 px-4 pb-4">
       <h4 class="mb-0 text-primary d-flex justify-content-between">
         <strong>{{ account.name }}</strong>
@@ -79,13 +79,15 @@
         <div class="row no-gutters mt-4 d-lg-flex d-none">
           <div class="col-lg-6 pr-lg-2">
             <a
-              href="/privado/fondos-mutuos"
-              class="btn btn-primary btn-block">{{ $t('summary-resume.invest-btn') }}</a>
+              href="#"
+              class="btn btn-primary btn-block"
+              @click.prevent="">{{ $t('summary-resume.invest-btn') }}</a>
           </div>
           <div class="col-lg-6 pl-lg-2 pt-2 pt-lg-0">
             <a
-              href="/privado/abonar"
-              class="btn btn-primary btn-block">{{ $t('summary-resume.pay-btn') }}</a>
+              href="#"
+              class="btn btn-primary btn-block"
+              @click.prevent="">{{ $t('summary-resume.pay-btn') }}</a>
           </div>
         </div>
 
@@ -131,3 +133,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../scss/variables.scss";
+
+@media (min-width: 992px){
+  .accounts__summary-sidebar{
+    border-right: 1px solid $primary-10;
+  }
+}
+</style>

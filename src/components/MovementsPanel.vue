@@ -2,7 +2,7 @@
   <div>
     <div
       class="d-flex flex-column flex-lg-row justify-content-between
-      px-4 py-lg-3 pt-0 pb-3 border-bottom">
+      px-0 px-lg-4 mx-4 mx-lg-0 py-lg-3 pt-0 pb-3 border-bottom">
       <a
         href="#"
         class="mr-3"
@@ -16,7 +16,7 @@
       </h4>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-4 border-right">
+      <div class="acccounts__movements-col-filters col-lg-4">
         <div class="movements-panel__filters p-lg-4 pt-4 px-4">
           <div class="movements-panel__filters-dates">
             <h4
@@ -27,15 +27,16 @@
               <vue-date-picker
                 v-model="dates"
                 type="month"
+                :name="$t('movements.period')"
                 :format="monthFormat"
                 :range="true"
                 :max-date="maxMonth"
                 :locale="{lang: 'es'}"
                 :validate="true"
                 fullscreen-mobile
-                :format-header="monthFormat"
+                :format-header="'MMMM YYYY'"
                 range-header-text="De %d a %d"
-                range-input-text="De %d a %d"
+                range-input-text="%d - %d"
                 @input="applyDates">
                 <template #activator="{ date }">
                   <button
@@ -444,7 +445,7 @@ export default {
       activeSummary: false,
       monthPeriod: true,
       visibleFilters: false,
-      monthFormat: 'MMMM YYYY',
+      monthFormat: 'MMM YYYY',
       movements: [],
       summary: {},
       filterBy: [
@@ -556,23 +557,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
-.movements-panel__content {
-  .movements-panel__row,
-  .movements-panel__summary {
-    .btn.collapsed  {
-      .svg-inline--fa {
-        transform: rotate(180deg);
-      }
-    }
-
-    .movements-panel__row-details,
-    .movements-panel__summary-details {
-      background-color: $tertiary-10;
+.movements-panel__row,
+.movements-panel__summary {
+  .btn.collapsed  {
+    .svg-inline--fa {
+      transform: rotate(180deg);
     }
   }
+
+  .movements-panel__row-details,
+  .movements-panel__summary-details {
+    background-color: $tertiary-10;
+  }
 }
+
 @media (max-width: 320px) {
   .movements-panel__filters-dates {
     .movements-panel__filter-date-btn {
@@ -582,6 +582,10 @@ export default {
   }
 }
 @media (min-width: 992px) {
+  .acccounts__movements-col-filters {
+    border-right: 1px solid $primary-10;
+  }
+
   .movements-panel__content {
     background-color: $tertiary-20;
 

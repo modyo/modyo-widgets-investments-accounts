@@ -121,13 +121,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import "../scss/variables.scss";
 
 .investment-item {
   border-bottom: 1px solid $tertiary-20;
+
   &:last-child {
     border-bottom: none;
   }
+
   .investment-item__row {
     background-color: $tertiary-10;
   }

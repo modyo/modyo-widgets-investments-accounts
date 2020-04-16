@@ -42,7 +42,7 @@
       <div
         v-for="input in config.notifications"
         :key="input.id"
-        class="mb-2">
+        class="mb-2 overflow-hidden">
         <m-switch-button
           :id="input.id"
           v-model="input.state"
