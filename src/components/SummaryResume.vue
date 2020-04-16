@@ -135,7 +135,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
 @media (min-width: 992px){
   .accounts__summary-sidebar{

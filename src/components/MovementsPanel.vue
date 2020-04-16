@@ -557,23 +557,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
-.movements-panel__content {
-  .movements-panel__row,
-  .movements-panel__summary {
-    .btn.collapsed  {
-      .svg-inline--fa {
-        transform: rotate(180deg);
-      }
-    }
-
-    .movements-panel__row-details,
-    .movements-panel__summary-details {
-      background-color: $tertiary-10;
+.movements-panel__row,
+.movements-panel__summary {
+  .btn.collapsed  {
+    .svg-inline--fa {
+      transform: rotate(180deg);
     }
   }
+
+  .movements-panel__row-details,
+  .movements-panel__summary-details {
+    background-color: $tertiary-10;
+  }
 }
+
 @media (max-width: 320px) {
   .movements-panel__filters-dates {
     .movements-panel__filter-date-btn {
@@ -586,6 +585,7 @@ export default {
   .acccounts__movements-col-filters {
     border-right: 1px solid $primary-10;
   }
+
   .movements-panel__content {
     background-color: $tertiary-20;
 
