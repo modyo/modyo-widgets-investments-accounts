@@ -1,4 +1,4 @@
-name: Build, Push And Release Draft
+name: Build and Publish
 on:
   push:
     branches:
@@ -14,15 +14,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         registry-url: https://npm.pkg.github.com/
         scope: '@modyo'
-    - name: Install dependencies with npm
-      run: npm i
+    - name: Install dependencies with yarn
+      run: yarn
       env:
         NODE_AUTH_TOKEN: ${{ secrets.TOKEN_REG }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This gets generated automatically
     - name: Build Package
-      run: npm run build --if-present
+      run: yarn build
     - name: Push to Modyo Site
-      run: npm run modyo-push
+      run: yarn modyo-push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This gets generated automatically
         MODYO_BASE_URL: ${{secrets.BASE_URL}}
@@ -31,7 +31,7 @@ jobs:
         MODYO_ID: ${{secrets.SITE_ID}}
         MODYO_NAME: ${{secrets.WIDGET_NAME}}
     - name: Push to Spanish Modyo Site
-      run: npm run modyo-push
+      run: yarn modyo-push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This gets generated automatically
         MODYO_BASE_URL: ${{secrets.BASE_URL}}
@@ -39,17 +39,6 @@ jobs:
         MODYO_TOKEN: ${{secrets.TOKEN}}
         MODYO_ID: ${{secrets.SITE_ID_ES}}
         MODYO_NAME: ${{secrets.WIDGET_NAME}}
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v2.3.1
-      with: # More info about the arguments on the action page
-        author_name: Modyo Automatic Commit
-        author_email: operations@modyo.com
-        message: "Built Lib"
-        path: "./dist"
-        pattern: "*" # Pattern that matches the files to commit
-        force: true # Whether to use the --force flag
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This gets generated automatically
     - name: Release Draft
       uses: release-drafter/release-drafter@v5
       with:
