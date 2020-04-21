@@ -339,9 +339,9 @@
               class="movements-panel__summary-details border-top bg-white">
               <h5 class="text-primary px-lg-4 px-3 pt-4">
                 <span class="font-weight-light d-lg-inline-block d-block">{{ $t('movements.period') }}:</span>
-                {{ fromDate | date('MMMM yyyy') }}
+                {{ fromDate | date('MMMM yyyy', dateFormats.lang) }}
                 {{ $t('movements.to') }}
-                {{ toDate | date('MMMM yyyy') }}
+                {{ toDate | date('MMMM yyyy', dateFormats.lang) }}
               </h5>
               <div
                 class="d-flex flex-column flex-lg-row align-items-lg-center
