@@ -28,15 +28,14 @@
                 v-model="dates"
                 type="month"
                 :name="$t('movements.period')"
-                :format="monthFormat"
+                :format="dateFormats.short"
                 :range="true"
                 :max-date="maxMonth"
-                :locale="{lang: 'es'}"
+                :locale="{lang: dateFormats.lang}"
                 :validate="true"
                 fullscreen-mobile
-                :format-header="'MMMM YYYY'"
-                range-header-text="De %d a %d"
-                range-input-text="%d - %d"
+                :format-header="dateFormats.short"
+                color="#2e4553"
                 @input="applyDates">
                 <template #activator="{ date }">
                   <button
@@ -421,7 +420,7 @@
 <script>
 import { VueDatePicker } from '@mathieustan/vue-datepicker';
 import {
-  startOfMonth, endOfMonth, subMonths, format,
+  startOfMonth, endOfMonth, subMonths, format, parseISO,
 } from 'date-fns';
 
 import { currency, date } from '@modyo/financial-commons';
@@ -445,7 +444,7 @@ export default {
       activeSummary: false,
       monthPeriod: true,
       visibleFilters: false,
-      monthFormat: 'MMM YYYY',
+      dateFormats: this.$t('date.format'),
       movements: [],
       summary: {},
       filterBy: [
@@ -458,9 +457,9 @@ export default {
         'others',
       ],
       filterByAll: true,
-      fromDate: format(startOfMonth(subMonths(new Date(), 1)), 'yyyy-MM'),
-      toDate: format(endOfMonth(new Date()), 'yyyy-MM'),
-      maxMonth: format(startOfMonth(new Date()), 'yyyy-MM'),
+      fromDate: format(startOfMonth(subMonths(new Date(), 1)), this.$t('date.format.long')),
+      toDate: format(new Date(), this.$t('date.format.long')),
+      maxMonth: format(new Date(), this.$t('date.format.long')),
     };
   },
   computed: {
@@ -502,16 +501,6 @@ export default {
         });
       }
     },
-    formatMonths(Dates) {
-      let formattedDates = '';
-      if (Dates[0]) {
-        formattedDates = format(Dates[0], this.monthFormat);
-      }
-      if (this.monthPeriod && Dates[1]) {
-        formattedDates += ` - ${format(Dates[1], this.monthFormat)}`;
-      }
-      return formattedDates;
-    },
     closePanel() {
       this.$store.commit('SET_SHOW_PANEL', false);
     },
@@ -538,7 +527,7 @@ export default {
       const params = {
         id: this.account.id,
         fromDate: this.fromDate,
-        toDate: this.toDate,
+        toDate: format(endOfMonth(parseISO(this.toDate)), this.dateFormats.long),
         filter: this.filterByAll,
         filters: this.filterBy,
       };

@@ -2,6 +2,18 @@
   "commons": {
     "back": "Volver"
   },
+  "date": {
+    "format": {
+      "lang": "es",
+      "last-3-months": "Últimos 3 meses",
+      "last-6-months": "Últimos 6 meses",
+      "last-month": "Mes pasado",
+      "long": "yyyy-MM-dd",
+      "short": "MMMM YYYY",
+      "this-month": "Este mes",
+      "range": "Rango de fechas"
+    }
+  },
   "investment-details": {
     "current-investment": "Inversión Actual",
     "distribution": "Distribución",
