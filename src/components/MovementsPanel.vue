@@ -11,18 +11,17 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> {{ $t('commons.back') }}</a>
-      <h4 class="mb-0 text-primary mt-3 mt-lg-0">
+      <p class="h5 mb-0 text-primary mt-3 mt-lg-0">
         {{ $t('movements.title') }}
-      </h4>
+      </p>
     </div>
     <div class="row no-gutters">
       <div class="acccounts__movements-col-filters col-lg-4">
         <div class="movements-panel__filters p-lg-4 pt-4 px-4">
           <div class="movements-panel__filters-dates">
-            <h4
-              class="text-primary d-none d-lg-block">
+            <p class="h6 text-primary d-none d-lg-block">
               <strong>{{ $t('movements.period') }}</strong>
-            </h4>
+            </p>
             <div class="datepicker mb-4">
               <vue-date-picker
                 v-model="dates"
@@ -53,9 +52,9 @@
             </div>
           </div>
           <div class="d-none d-lg-block movements-panel__filters-movement-type">
-            <h4 class="text-primary">
+            <p class="h6 text-primary">
               <strong>{{ $t('movements.movement-types') }}</strong>
-            </h4>
+            </p>
             <div class="custom-control custom-checkbox">
               <input
                 id="filterByAll"
@@ -206,7 +205,7 @@
             <div
               v-for="movement in movements"
               :key="movement.id"
-              class="movements-panel__row bg-white border-bottom mb-lg-1">
+              class="movements-panel__row bg-white border-bottom py-2">
               <a
                 :href="'#movements-' + movement.id"
                 :aria-controls="'#movements-' + movement.id"

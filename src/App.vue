@@ -34,7 +34,7 @@
           <a
             :class="{active: activeAccount.id == account.id}"
             href="#"
-            class="nav-link px-4"
+            class="nav-link px-5 py-3"
             @click.prevent="setActiveAccount(account)">{{ account.name }}</a>
         </li>
       </ul>
