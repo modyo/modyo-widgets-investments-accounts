@@ -17,13 +17,16 @@ export default {
 
   async GET_ACCOUNT_MOVEMENTS(context, payload) {
     try {
-      const movements = await axios.get(`${BASE_URL}/api/v1/AccountMovements`, {
+      const movements = await axios.get('https://modyo-investments-api.herokuapp.com/api/v1/AccountMovements', {
+        headers: {
+          'Accept-Language': LANG,
+        },
         params: {
           id: payload.id,
           fromDate: payload.fromDate,
           toDate: payload.toDate,
           filter: payload.filter,
-          filters: payload.filters,
+          filters: payload.filters ? payload.filters.join(',') : null,
         },
       });
       return movements;
