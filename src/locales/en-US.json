@@ -20,7 +20,7 @@
       "quantity": "Quantity",
       "title": {
         "buy-sell-historical": "Buy/Sell History",
-        "input-rescue-historical": "Histórico Aporte/Rescate"
+        "input-rescue-historical": "Deposit/Withdrawal History"
       }
     },
     "rentability": "Profitability",
