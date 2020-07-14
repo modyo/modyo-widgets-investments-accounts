@@ -1,4 +1,4 @@
-﻿export default {
+export default {
   localCurrency: 'clp',
   accounts: [],
   modalData: null,

@@ -1,4 +1,4 @@
-﻿export default {
+export default {
   STOP_LOADING(state) {
     state.loading = false;
   },
