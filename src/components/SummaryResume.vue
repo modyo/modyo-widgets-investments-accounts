@@ -156,8 +156,8 @@ export default {
   }
 }
 
-@media (min-width: 992px){
-  .accounts__summary-sidebar{
+@media (min-width: 992px) {
+  .accounts__summary-sidebar {
     border-right: 1px solid $primary-10;
   }
 }

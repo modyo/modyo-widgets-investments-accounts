@@ -549,7 +549,7 @@ export default {
 
 .movements-panel__row,
 .movements-panel__summary {
-  .btn.collapsed  {
+  .btn.collapsed {
     .svg-inline--fa {
       transform: rotate(180deg);
     }
@@ -579,7 +579,7 @@ export default {
 
     .movements-panel__row,
     .movements-panel__summary {
-      .btn.collapsed  {
+      .btn.collapsed {
         z-index: 100;
       }
     }
