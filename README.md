@@ -1,29 +1,46 @@
-# investment-accounts
+# Project Title
 
-## Project setup
-```
-yarn install
-```
+## Table of Contents
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
++ [About](#about)
++ [Getting Started](#getting_started)
++ [Usage](#usage)
++ [Contributing](../CONTRIBUTING.md)
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## About <a name = "about"></a>
 
-### Run your unit tests
-```
-yarn test:unit
-```
+Write about 1-2 paragraphs describing the purpose of your project.
 
-### Lints and fixes files
+## Getting Started <a name = "getting_started"></a>
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software and how to install them.
+
 ```
-yarn lint
+Give examples
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Installing
+
+A step by step series of examples that tell you how to get a development env running.
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo.
+
+## Usage <a name = "usage"></a>
+
+All the js inside repositories is optional and provide basic usage of repository pattern in Vue to handle external resources consumptions.

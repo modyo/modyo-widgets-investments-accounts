@@ -211,7 +211,7 @@ export default {
   }
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .investments-details__content {
     background-color: $tertiary-20;
   }
