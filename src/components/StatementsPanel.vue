@@ -11,20 +11,13 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> {{ $t('commons.back') }}</a>
-      <h4 class="mb-0 mt-3 mt-lg-0 text-primary">
+      <p class="h5 mb-0 mt-3 mt-lg-0 text-primary">
         {{ $t('statements.title') }}
-      </h4>
+      </p>
     </div>
     <div class="mx-lg-1 mx-4 my-4 mt-lg-0 mb-lg-1">
       <div>
         <table class="table mb-0 mt-1 border-bottom">
-          <thead class="d-none d-lg-block">
-            <tr>
-              <td class="pl-4 bg-white rounded-top border-left border-right d-block">
-                {{ $t('statements.period') }}
-              </td>
-            </tr>
-          </thead>
           <tbody class="border-left border-right">
             <tr
               v-for="statement in statements"
@@ -38,7 +31,7 @@
               </td>
               <td class="text-right pr-4 bg-white align-middle">
                 <a
-                  :href="image_bl"
+                  :href="statement.document"
                   target="_blank"
                   class="btn btn-secondary d-none d-lg-inline-block">
                   <font-awesome-icon
@@ -48,7 +41,7 @@
                   {{ $t('statements.download') }}
                 </a>
                 <a
-                  :href="image_bl"
+                  :href="statement.document"
                   target="_blank"
                   class="btn btn-secondary d-lg-none p-2">
                   <font-awesome-icon
@@ -81,7 +74,6 @@ export default {
     return {
       isLoading: true,
       statements: [],
-      image_bl: 'https://cloud.modyocdn.com/uploads/9dd6210d-1af4-4bce-a562-ad0fe38a214d/original/Business_letter.pdf',
     };
   },
   computed: {

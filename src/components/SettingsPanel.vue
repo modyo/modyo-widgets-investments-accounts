@@ -18,9 +18,9 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> {{ $t('commons.back') }}</a>
-      <h4 class="mb-0 text-primary mt-3 mt-lg-0">
+      <p class="h5 mb-0 text-primary mt-3 mt-lg-0">
         {{ $t('settings-panel.title') }}
-      </h4>
+      </p>
     </div>
 
     <div class="p-4">
@@ -42,17 +42,17 @@
       <div
         v-for="input in config.notifications"
         :key="input.id"
-        class="mb-2">
+        class="mb-2 overflow-hidden">
         <m-switch-button
           :id="input.id"
           v-model="input.state"
-          active-color="#53c737"
-          class="my-3">
+          active-color="#2e4553"
+          class="my-2">
           {{ input.name }}
         </m-switch-button>
       </div>
       <div class="text-right mt-4">
-        <button class="btn btn-primary btn-block">
+        <button class="btn btn-primary btn-block py-2">
           {{ $t('settings-panel.update-btn') }}
         </button>
       </div>

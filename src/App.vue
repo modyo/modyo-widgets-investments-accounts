@@ -11,7 +11,7 @@
     </div>
     <div
       v-else
-      class="accounts__container container p-0">
+      class="accounts__container container-lg p-0">
       <div class="d-block d-lg-none p-lg-4 px-4 pt-4 pb-3">
         <multiselect
           v-model="activeAccount"
@@ -34,7 +34,7 @@
           <a
             :class="{active: activeAccount.id == account.id}"
             href="#"
-            class="nav-link px-4"
+            class="nav-link px-5 py-3"
             @click.prevent="setActiveAccount(account)">{{ account.name }}</a>
         </li>
       </ul>

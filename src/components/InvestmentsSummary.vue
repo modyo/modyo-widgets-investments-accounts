@@ -8,18 +8,19 @@
         class="d-flex flex-fill flex-column align-items-center justify-content-center px-4 text-center mb-4 mb-lg-0">
         <h4>{{ $t('investments-summary.empty-amount') }}</h4>
         <a
-          href="/privado/abonar"
-          class="btn btn-primary btn-lg px-5 mt-3">{{ $t('investments-summary.pay') }}</a>
+          href="#"
+          class="btn btn-primary btn-lg px-5 mt-3"
+          @click.prevent="">{{ $t('investments-summary.pay') }}</a>
       </div>
       <div
         v-else
         class="px-lg-0 px-4">
-        <h4 class="text-primary mb-0">
+        <p class="h5 text-primary mb-0">
           {{ $t('investments-summary.title') }}
-        </h4>
+        </p>
         <div
           class="mb-5">
-          <div class="progress investments-summary__progress my-lg-5 my-4 rounded-sm">
+          <div class="progress investments-summary__progress my-4 rounded">
             <div
               v-for="product in products"
               :key="product.productId"
@@ -34,13 +35,13 @@
             </div>
           </div>
 
-          <div class="investments-summary__product-list list-group">
+          <div class="investments-summary__product-list list-group rounded">
             <a
               v-for="product in products"
               :key="product.productId"
               :class="'list-' + product.slug"
               href="#"
-              class="d-flex list-group-item align-items-center rounded-0"
+              class="d-flex list-group-item align-items-center"
               @click="$emit('goto', 'investments', product.slug)">
               {{ product.name }}
               <span class="ml-auto mr-1">
@@ -54,32 +55,32 @@
           </div>
         </div>
         <div class="d-flex flex-column flex-lg-row mt-5">
-          <h4 class="text-primary">
+          <p class="h5 text-primary">
             {{ $t('investments-summary.currency-detail') }}
-          </h4>
+          </p>
           <p class="mb-0 ml-lg-auto mt-3 mt-lg-0 d-flex d-lg-block justify-content-between">
             <span
               v-if="indicators.uf"
-              class="badge badge-primary ml-lg-3 mr-lg-0 mr-1 px-2 py-2 py-lg-1 flex-fill">
+              class="badge badge-primary font-weight-normal ml-lg-3 mr-lg-0 mr-1 px-2 py-2 flex-fill">
               UF: {{ indicators.uf.valor | currency }}
             </span>
             <span
               v-if="indicators.dolar"
-              class="badge badge-primary ml-lg-3 mr-lg-0 mx-1 px-2 py-2 py-lg-1 flex-fill">
+              class="badge badge-primary font-weight-normal ml-lg-3 mr-lg-0 mx-1 px-2 py-2 flex-fill">
               USD: {{ indicators.dolar.valor | currency }}
             </span>
             <span
               v-if="indicators.euro"
-              class="badge badge-primary ml-lg-3 mr-lg-0 ml-1 px-2 py-2 py-lg-1 flex-fill">
+              class="badge badge-primary font-weight-normal ml-lg-3 mr-lg-0 ml-1 px-2 py-2 flex-fill">
               EUR: {{ indicators.euro.valor | currency }}
             </span>
           </p>
         </div>
-        <div class="investments-summary__currency-list list-group mt-3 my-4 mb-lg-0">
+        <div class="investments-summary__currency-list list-group mt-3 my-4 mb-lg-0 rounded">
           <div
             v-for="(currency,index) in currencies"
             :key="index"
-            class="d-flex list-group-item d-flex align-items-center rounded-0">
+            class="d-flex list-group-item d-flex align-items-center">
             <p class="col mb-0 p-0">
               {{ currency.name }}
             </p>
@@ -137,7 +138,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
 .investments-summary__progress {
   height: 3rem;

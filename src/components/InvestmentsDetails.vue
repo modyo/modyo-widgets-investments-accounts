@@ -9,9 +9,9 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> {{ $t('commons.back') }}</a>
-      <h4 class="mb-0 text-primary">
+      <p class="h5 mb-0 text-primary">
         {{ $t('investment-details.title') }}
-      </h4>
+      </p>
     </div>
     <div class="row no-gutters">
       <div class="col-lg-3 p-4 border-right">
@@ -34,7 +34,7 @@
             v-for="(product,index) in products"
             :key="product.id"
             class="nav-item"
-            :class="index==products.length-1 ? 'mt-3' : false">
+            :class="index==products.length-1 ? 'mt-2' : false">
             <a
               :class="investmentType == product.slug ? 'active' : 'border'"
               class="nav-link d-flex justify-content-between align-items-center"
@@ -196,9 +196,22 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
-@media (min-width: 992px){
+.nav-link {
+  background-color: $primary-10;
+
+  &:hover,
+  &:focus {
+    background: $primary-20;
+  }
+
+  small {
+    color: $primary-60;
+  }
+}
+
+@media (min-width: 992px) {
   .investments-details__content {
     background-color: $tertiary-20;
   }

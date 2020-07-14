@@ -5,7 +5,7 @@
     <a
       :href="'#infoTable-'+ item.id"
       :aria-controls="'#infoTable-'+ item.id"
-      class="row no-gutters collapsed px-4 py-2"
+      class="row no-gutters collapsed px-4 py-3"
       data-toggle="collapse"
       aria-expanded="true">
       <div
@@ -121,13 +121,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import "../scss/variables.scss";
 
 .investment-item {
   border-bottom: 1px solid $tertiary-20;
+
   &:last-child {
     border-bottom: none;
   }
+
   .investment-item__row {
     background-color: $tertiary-10;
   }

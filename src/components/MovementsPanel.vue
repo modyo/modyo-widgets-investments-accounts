@@ -2,7 +2,7 @@
   <div>
     <div
       class="d-flex flex-column flex-lg-row justify-content-between
-      px-4 py-lg-3 pt-0 pb-3 border-bottom">
+      px-0 px-lg-4 mx-4 mx-lg-0 py-lg-3 pt-0 pb-3 border-bottom">
       <a
         href="#"
         class="mr-3"
@@ -11,31 +11,30 @@
           icon="chevron-left"
           size="sm"
           class="mr-2" /> {{ $t('commons.back') }}</a>
-      <h4 class="mb-0 text-primary mt-3 mt-lg-0">
+      <p class="h5 mb-0 text-primary mt-3 mt-lg-0">
         {{ $t('movements.title') }}
-      </h4>
+      </p>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-4 border-right">
+      <div class="acccounts__movements-col-filters col-lg-4">
         <div class="movements-panel__filters p-lg-4 pt-4 px-4">
           <div class="movements-panel__filters-dates">
-            <h4
-              class="text-primary d-none d-lg-block">
+            <p class="h6 text-primary d-none d-lg-block">
               <strong>{{ $t('movements.period') }}</strong>
-            </h4>
+            </p>
             <div class="datepicker mb-4">
               <vue-date-picker
                 v-model="dates"
                 type="month"
-                :format="monthFormat"
+                :name="$t('movements.period')"
+                :format="dateFormats.short"
                 :range="true"
                 :max-date="maxMonth"
-                :locale="{lang: 'es'}"
+                :locale="{lang: dateFormats.lang}"
                 :validate="true"
                 fullscreen-mobile
-                :format-header="monthFormat"
-                range-header-text="De %d a %d"
-                range-input-text="De %d a %d"
+                :format-header="dateFormats.short"
+                color="#2e4553"
                 @input="applyDates">
                 <template #activator="{ date }">
                   <button
@@ -53,9 +52,9 @@
             </div>
           </div>
           <div class="d-none d-lg-block movements-panel__filters-movement-type">
-            <h4 class="text-primary">
+            <p class="h6 text-primary">
               <strong>{{ $t('movements.movement-types') }}</strong>
-            </h4>
+            </p>
             <div class="custom-control custom-checkbox">
               <input
                 id="filterByAll"
@@ -206,7 +205,7 @@
             <div
               v-for="movement in movements"
               :key="movement.id"
-              class="movements-panel__row bg-white border-bottom mb-lg-1">
+              class="movements-panel__row bg-white border-bottom py-2">
               <a
                 :href="'#movements-' + movement.id"
                 :aria-controls="'#movements-' + movement.id"
@@ -339,9 +338,9 @@
               class="movements-panel__summary-details border-top bg-white">
               <h5 class="text-primary px-lg-4 px-3 pt-4">
                 <span class="font-weight-light d-lg-inline-block d-block">{{ $t('movements.period') }}:</span>
-                {{ fromDate | date('MMMM yyyy') }}
+                {{ fromDate | date('MMMM yyyy', dateFormats.lang) }}
                 {{ $t('movements.to') }}
-                {{ toDate | date('MMMM yyyy') }}
+                {{ toDate | date('MMMM yyyy', dateFormats.lang) }}
               </h5>
               <div
                 class="d-flex flex-column flex-lg-row align-items-lg-center
@@ -420,7 +419,7 @@
 <script>
 import { VueDatePicker } from '@mathieustan/vue-datepicker';
 import {
-  startOfMonth, endOfMonth, subMonths, format,
+  startOfMonth, endOfMonth, subMonths, format, parseISO,
 } from 'date-fns';
 
 import { currency, date } from '@modyo/financial-commons';
@@ -444,7 +443,7 @@ export default {
       activeSummary: false,
       monthPeriod: true,
       visibleFilters: false,
-      monthFormat: 'MMMM YYYY',
+      dateFormats: this.$t('date.format'),
       movements: [],
       summary: {},
       filterBy: [
@@ -457,9 +456,9 @@ export default {
         'others',
       ],
       filterByAll: true,
-      fromDate: format(startOfMonth(subMonths(new Date(), 1)), 'yyyy-MM'),
-      toDate: format(endOfMonth(new Date()), 'yyyy-MM'),
-      maxMonth: format(startOfMonth(new Date()), 'yyyy-MM'),
+      fromDate: format(startOfMonth(subMonths(new Date(), 1)), this.$t('date.format.long')),
+      toDate: format(new Date(), this.$t('date.format.long')),
+      maxMonth: format(new Date(), this.$t('date.format.long')),
     };
   },
   computed: {
@@ -501,16 +500,6 @@ export default {
         });
       }
     },
-    formatMonths(Dates) {
-      let formattedDates = '';
-      if (Dates[0]) {
-        formattedDates = format(Dates[0], this.monthFormat);
-      }
-      if (this.monthPeriod && Dates[1]) {
-        formattedDates += ` - ${format(Dates[1], this.monthFormat)}`;
-      }
-      return formattedDates;
-    },
     closePanel() {
       this.$store.commit('SET_SHOW_PANEL', false);
     },
@@ -537,7 +526,7 @@ export default {
       const params = {
         id: this.account.id,
         fromDate: this.fromDate,
-        toDate: this.toDate,
+        toDate: format(endOfMonth(parseISO(this.toDate)), this.dateFormats.long),
         filter: this.filterByAll,
         filters: this.filterBy,
       };
@@ -556,23 +545,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables.scss";
 
-.movements-panel__content {
-  .movements-panel__row,
-  .movements-panel__summary {
-    .btn.collapsed  {
-      .svg-inline--fa {
-        transform: rotate(180deg);
-      }
-    }
-
-    .movements-panel__row-details,
-    .movements-panel__summary-details {
-      background-color: $tertiary-10;
+.movements-panel__row,
+.movements-panel__summary {
+  .btn.collapsed {
+    .svg-inline--fa {
+      transform: rotate(180deg);
     }
   }
+
+  .movements-panel__row-details,
+  .movements-panel__summary-details {
+    background-color: $tertiary-10;
+  }
 }
+
 @media (max-width: 320px) {
   .movements-panel__filters-dates {
     .movements-panel__filter-date-btn {
@@ -582,12 +570,16 @@ export default {
   }
 }
 @media (min-width: 992px) {
+  .acccounts__movements-col-filters {
+    border-right: 1px solid $primary-10;
+  }
+
   .movements-panel__content {
     background-color: $tertiary-20;
 
     .movements-panel__row,
     .movements-panel__summary {
-      .btn.collapsed  {
+      .btn.collapsed {
         z-index: 100;
       }
     }

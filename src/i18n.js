@@ -11,7 +11,7 @@ import enUS from 'vee-validate/dist/locale/en.json';
 
 Vue.use(VueI18n);
 
-const LANG = window.liquid.lang;
+const LANG = window.liquid ? window.liquid.lang : 'es-CL';
 
 function loadLocaleMessages() {
   const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i);

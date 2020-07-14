@@ -2,6 +2,18 @@
   "commons": {
     "back": "Back"
   },
+  "date": {
+    "format": {
+      "lang": "en",
+      "last-3-months": "Last 3 months",
+      "last-6-months": "Last 6 months",
+      "last-month": "Last month",
+      "long": "yyyy-MM-dd",
+      "short": "MMMM YYYY",
+      "this-month": "This month",
+      "range": "Date range"
+    }
+  },
   "investment-details": {
     "current-investment": "Current investment",
     "distribution": "Distribution",
@@ -69,7 +81,7 @@
     "select-other-period": "Select another period",
     "stock": "Stock",
     "title": "Movement Details",
-    "to": "a",
+    "to": "to",
     "to-account": "Destination Account",
     "total-amount": "Total Amount",
     "transfers": "Transfers",

@@ -1,7 +1,7 @@
 <template>
-  <div class="accounts__summary-sidebar border-right">
+  <div class="accounts__summary-sidebar">
     <div class="p-lg-4 px-4 pb-4">
-      <h4 class="mb-0 text-primary d-flex justify-content-between">
+      <h1 class="h5 mb-0 text-primary d-flex justify-content-between">
         <strong>{{ account.name }}</strong>
         <a
           href="#"
@@ -9,7 +9,7 @@
           @click.prevent="$emit('config')">
           <font-awesome-icon icon="cog" />
         </a>
-      </h4>
+      </h1>
       <p class="mb-0">
         {{ $t('summary-resume.title') }}
       </p>
@@ -47,29 +47,35 @@
           </td>
         </tr>
       </table>
-      <div class="px-4 pb-4 pt-2 mt-4">
+
+
+      <div class="flex-column d-none d-lg-flex px-4 pb-4 pt-2 mt-4">
         <a
           href="#"
-          class="btn btn-secondary btn-block"
-          :class="currentPage==='investments' ? 'active' : false"
+          class="nav-link d-flex justify-content-between align-items-center rounded mb-2"
+          :class="currentPage==='investments' ? 'active' : 'border'"
           @click.prevent="$emit('goto', 'investments')">{{ $t('summary-resume.investments-btn') }}
           <font-awesome-icon
             icon="chevron-right"
             size="xs"
-            class="ml-2" /> </a>
+            class="ml-2" />
+        </a>
+
         <a
           href="#"
-          class="btn btn-secondary btn-block"
-          :class="currentPage==='movements' ? 'active' : false"
+          class="nav-link d-flex justify-content-between align-items-center rounded mb-2"
+          :class="currentPage==='movements' ? 'active' : 'border'"
           @click.prevent="$emit('goto', 'movements')">{{ $t('summary-resume.movements-btn') }}
           <font-awesome-icon
             icon="chevron-right"
             size="xs"
-            class="ml-2" /></a>
+            class="ml-2" />
+        </a>
+
         <a
           href="#"
-          class="btn btn-secondary btn-block"
-          :class="currentPage==='statements' ? 'active' : false"
+          class="nav-link d-flex justify-content-between align-items-center rounded"
+          :class="currentPage==='statements' ? 'active' : 'border'"
           @click.prevent="$emit('statements')">{{ $t('summary-resume.statements-btn') }}
           <font-awesome-icon
             icon="chevron-right"
@@ -79,13 +85,15 @@
         <div class="row no-gutters mt-4 d-lg-flex d-none">
           <div class="col-lg-6 pr-lg-2">
             <a
-              href="/privado/fondos-mutuos"
-              class="btn btn-primary btn-block">{{ $t('summary-resume.invest-btn') }}</a>
+              href="#"
+              class="btn btn-primary btn-block"
+              @click.prevent="">{{ $t('summary-resume.invest-btn') }}</a>
           </div>
           <div class="col-lg-6 pl-lg-2 pt-2 pt-lg-0">
             <a
-              href="/privado/abonar"
-              class="btn btn-primary btn-block">{{ $t('summary-resume.pay-btn') }}</a>
+              href="#"
+              class="btn btn-primary btn-block"
+              @click.prevent="">{{ $t('summary-resume.pay-btn') }}</a>
           </div>
         </div>
 
@@ -131,3 +139,26 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../scss/variables.scss";
+
+.nav-link {
+  background-color: $primary-10;
+
+  &:hover,
+  &:focus {
+    background: $primary-20;
+  }
+
+  small {
+    color: $primary-60;
+  }
+}
+
+@media (min-width: 992px) {
+  .accounts__summary-sidebar {
+    border-right: 1px solid $primary-10;
+  }
+}
+</style>
