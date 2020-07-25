@@ -48,8 +48,7 @@
         </tr>
       </table>
 
-
-      <div class="flex-column d-none d-lg-flex px-4 pb-4 pt-2 mt-4">
+      <div class="flex-column d-lg-flex px-4 pb-4 pt-2 mt-4">
         <a
           href="#"
           class="nav-link d-flex justify-content-between align-items-center rounded mb-2"
