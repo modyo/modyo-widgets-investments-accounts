@@ -33,7 +33,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@mathieustan/vue-datepicker": "0.2.3-rc.2",
-    "@modyo/financial-commons": "1.0.4",
+    "@modyo/financial-commons": "^2.1.12",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
