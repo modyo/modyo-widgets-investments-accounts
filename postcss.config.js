@@ -16,6 +16,7 @@ if (IN_PRODUCTION) {
       /^(?!(|.*?:)cursor-move).+-move$/,
       /^router-link(|-exact)-active$/,
       /^multiselect*/,
+      /modal-backdrop/,
       /data-v-.*/,
       /svg.*/,
       /fa.*/,
