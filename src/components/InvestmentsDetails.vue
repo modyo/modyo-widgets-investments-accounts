@@ -100,22 +100,22 @@
         </div>
         <div class="investments-details__summary px-4 py-lg-3 py-4 mt-2 mt-lg-0">
           <div class="row no-gutters">
-            <div class="col-lg-4 d-none d-lg-flex">
+            <div class="col-lg-4 d-none d-lg-flex px-1">
               <h5 class="mb-0 text-primary">
                 {{ $t('investment-details.summary') }}
               </h5>
             </div>
-            <div class="col col-lg-3 ml-auto text-left text-lg-right">
+            <div class="col col-lg-3 ml-auto text-left text-lg-right px-1">
               <strong class="d-block">{{ activeProduct.amountTotalReturn.valueString }}</strong>
               <small>{{ $t('investment-details.utility-total-loss') }}</small>
             </div>
-            <div class="col col-lg-3 text-center text-lg-right">
+            <div class="col col-lg-3 text-center text-lg-right px-1">
               <strong class="d-block">
                 {{ activeProduct.amount.valueString }}
               </strong>
               <small>{{ $t('investment-details.total-current-investment') }}</small>
             </div>
-            <div class="col col-lg-2 text-right">
+            <div class="col col-lg-2 text-right px-1">
               <strong class="d-block">
                 {{ activeProduct.amount.percentageString }}
               </strong>
