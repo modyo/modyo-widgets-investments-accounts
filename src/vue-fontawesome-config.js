@@ -11,5 +11,4 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(faTimes, faFilePdf, faEllipsisV, faChevronUp, faFileDownload,
   faChevronLeft, faChevronRight, faCog, faCalendar, faFileExcel);
 
-
 Vue.component('font-awesome-icon', FontAwesomeIcon);

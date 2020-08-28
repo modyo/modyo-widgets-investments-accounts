@@ -79,6 +79,14 @@ p {
   }
 }
 
+.multiselect .multiselect__option--highlight {
+  background-color: $primary-100;
+}
+
+.multiselect .multiselect__option--selected.multiselect__option--highlight {
+  background-color: $primary-100;
+}
+
 .form-control::placeholder,
 .multiselect__placeholder {
   color: $secondary;

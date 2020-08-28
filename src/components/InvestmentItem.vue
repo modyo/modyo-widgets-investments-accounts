@@ -45,13 +45,13 @@
       class="collapse row no-gutters investment-item__row p-4 border-top"
       role="tabpanel"
       data-parent="#investments-accordion">
-      <div class="col order-2 text-lg-center">
+      <div class="col-6 col-sm-3 order-2 text-lg-right mt-4 mt-sm-0">
         <a
           href="#accounts-modal"
           class="btn btn-primary px-4"
           @click.prevent="setModalData(item)">{{ $t('investment-item.detail') }}</a>
       </div>
-      <div class="col text-lg-center">
+      <div class="col-6 col-sm-3">
         <small
           v-if="item.slug === 'stock'"
           class="d-block">{{ $t('investment-item.closing-price') }}</small>
@@ -62,7 +62,7 @@
           {{ item.currentPriceString }}
         </p>
       </div>
-      <div class="col text-lg-center">
+      <div class="col-6 col-sm-3">
         <small class="d-block">{{ $t('investment-item.utility-total-loss') }}</small>
         <p
           v-if="item.amountTotalReturn.currency !== localCurrency"
@@ -75,7 +75,7 @@
           {{ item.amountTotalReturn.valueString }}
         </p>
       </div>
-      <div class="col text-lg-center">
+      <div class="col-6 col-sm-3 mt-4 mt-sm-0">
         <small
           v-if="item.slug === 'stock'"
           class="d-block">{{ $t('investment-item.purchase-avg-price') }}</small>
