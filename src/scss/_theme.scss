@@ -4,20 +4,13 @@ body {
   height: 100%;
 }
 
-body {
-  background: $primary-80;
-}
+/******************
+EXTEND BOOTSTRAP
+*******************/
 
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) {
-  body {
-    font-size: .875rem;
-  }
-}
-
-p {
-  color: $primary-80;
-}
+@include bg-variant(".bg-tertiary", $tertiary, true);
+@include bg-variant(".bg-stocks", $stocks, true);
+@include bg-variant(".bg-mutual-funds", $mutual-funds, true);
 
 .btn-primary {
   &:disabled {
@@ -37,54 +30,6 @@ p {
   &:focus {
     background-color: #fcfcfc;
   }
-}
-
-.text-tertiary {
-  color: $tertiary-100;
-}
-
-.bg-tertiary {
-  background-color: $tertiary-100;
-}
-
-.bg-tertiary-20 {
-  background-color: $tertiary-20;
-}
-
-.bg-stocks {
-  background-color: $stocks;
-}
-
-.bg-mutual-funds {
-  background-color: $mutual-funds;
-}
-
-.btn-primary-dark {
-  color: #fff;
-
-  background-color: $primary;
-
-  &:focus,
-  &:hover {
-    color: #fff;
-
-    background-color: $primary-dark;
-  }
-
-  &:disabled {
-    color: #fff;
-
-    background-color: $primary-20;
-    opacity: 1;
-  }
-}
-
-.multiselect .multiselect__option--highlight {
-  background-color: $primary-100;
-}
-
-.multiselect .multiselect__option--selected.multiselect__option--highlight {
-  background-color: $primary-100;
 }
 
 .form-control::placeholder,
@@ -129,18 +74,18 @@ p {
   }
 }
 
-@media (max-width: 575.98px) {
+/******************
+MEDIA QUERIES
+*******************/
+
+@include media-breakpoint-down(xs) {
+  body {
+    font-size: .875rem;
+  }
+
   .multiselect .multiselect__placeholder,
   .multiselect .multiselect__single,
   .multiselect .multiselect__input {
     font-size: .8rem;
-  }
-}
-
-.switch-button-control {
-  display: flex;
-
-  .switch-button-label {
-    flex: 1 1 auto !important; /* stylelint-disable-line declaration-no-important */
   }
 }
