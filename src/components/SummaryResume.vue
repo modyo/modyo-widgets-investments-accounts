@@ -16,9 +16,9 @@
     </div>
     <div>
       <div class="text-center text-lg-right px-4 mb-4">
-        <h3 class="mb-0 text-primary">
+        <h2 class="mb-0 text-primary h3">
           {{ account.amount.valueString }}
-        </h3>
+        </h2>
         <div class="">
           <p class="mb-0 d-block">
             {{ $t('summary-resume.account-label') }}

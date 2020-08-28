@@ -36,7 +36,6 @@ function loadLocaleMessages() {
     validations: enUS.messages,
   };
 
-
   return messages;
 }
 
