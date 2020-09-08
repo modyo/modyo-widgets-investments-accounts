@@ -55,7 +55,7 @@ NOW THEREFORE, in consideration of the mutual covenants contained herein and int
 “Term” means the term set forth in an Order Form.
 
  “Territory” means the geographic area specified in the Order Form.
- 
+
 “Third Party Software” means any third party software identified as such in Modyo documentation, in an Order Form, including without limitation plug-ins, add-ons, application programming interfaces, utilities or scripts that may be provided by Licensor to Licensee hereunder.
 
 “Updates” means any updates to and new versions of Licensor Software released by Licensor from time to time that may contain enhancements, bug fixes or other modifications to the Licensor Software.
@@ -205,7 +205,6 @@ In new versions of Licensor Software, Licensor reserves the right to modify the 
 14.5 Relationship of Parties.  Licensor and Licensee acknowledge that the relationship between them shall be considered at all times as independent contractors.  Neither Party shall have the authority to enter into any contract on behalf of the other Party or to otherwise bind the other Party to any legal obligation.
 
 14.6 Affiliates.  Licensee acknowledges that portions of the Licensor Software and Associated Services may be provided by Affiliates of Licensor.  In such cases, Licensor shall ensure that such Affiliates comply with its obligations set forth in this Agreement and shall remain liable for any breach hereof by such Affiliates.
-
 
 14.7 Entire Agreement.  This Agreement, including the Order Form, Schedules and Exhibits attached hereto, shall constitute the entire agreement between the Parties with respect to the subject matter hereof and supersedes all prior proposals, negotiations and other communications between the Parties, whether oral, written, electronic or otherwise.  This Agreement may only be amended, modified or supplemented by an agreement in writing signed by duly authorized representatives of both Parties.  In no event shall the terms contained in any purchase order, invoice or other similar document serve to modify or supplement the provisions of this Agreement.  The order of precedence in the case of any conflict involving the terms and conditions in this Agreement shall be as follows: Order Form, Modyo Software License Agreement, Schedule and Exhibit; provided that the terms of any Order Form shall only apply with regard to the Licensor  Software or Associated Services provided pursuant to such Order Form.
 
