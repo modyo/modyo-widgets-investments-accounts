@@ -21,7 +21,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@mathieustan/vue-datepicker": "0.2.3-rc.2",
-    "@modyo/financial-commons": "^2.1.12",
+    "@modyo/financial-commons": "^2.1.26",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",
@@ -72,7 +72,7 @@
     "Jorge Saud <jsaud@modyo.com>"
   ],
   "homepage": "https://github.com/modyo/modyo-widgets-investments-accounts",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
     "url": "git@github.com:modyo/modyo-widgets-investments-accounts.git"
