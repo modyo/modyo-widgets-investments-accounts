@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/variables";
 
 .investment-modal__subtitle {
   background-color: $tertiary-10;

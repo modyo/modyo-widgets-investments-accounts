@@ -201,7 +201,7 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss" scoped>
-@import "./scss/custom.scss";
+@import "./scss/custom";
 
 .accounts-app {
   min-height: 100%;

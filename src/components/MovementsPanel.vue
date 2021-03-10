@@ -545,7 +545,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/variables";
 
 .movements-panel__row,
 .movements-panel__summary {

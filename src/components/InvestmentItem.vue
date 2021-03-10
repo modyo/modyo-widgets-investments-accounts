@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/variables";
 
 .investment-item {
   border-bottom: 1px solid $tertiary-20;
