@@ -140,7 +140,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/variables";
 
 .nav-link {
   background-color: $primary-10;

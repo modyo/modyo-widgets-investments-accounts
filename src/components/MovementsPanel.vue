@@ -153,19 +153,6 @@
                 {{ $t('movements.types.dividend') }}
               </label>
             </div>
-            <div class="custom-control custom-checkbox">
-              <input
-                id="check-others"
-                v-model="filterBy"
-                type="checkbox"
-                class="custom-control-input rounded-0 filter-by"
-                @change="checkFilters">
-              <label
-                class="custom-control-label"
-                for="check-others">
-                {{ $t('movements.types.others') }}
-              </label>
-            </div>
           </div>
           <a
             href="#"
@@ -421,8 +408,8 @@ import { VueDatePicker } from '@mathieustan/vue-datepicker';
 import {
   startOfMonth, endOfMonth, subMonths, format, parseISO,
 } from 'date-fns';
-
 import { currency, date } from '@modyo/financial-commons';
+import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
 
 export default {
 
@@ -453,7 +440,6 @@ export default {
         'redeem-mutual-fund',
         'deposit-cash',
         'withdraw-cash',
-        'others',
       ],
       filterByAll: true,
       fromDate: format(startOfMonth(subMonths(new Date(), 1)), this.$t('date.format.long')),
@@ -545,7 +531,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/variables";
 
 .movements-panel__row,
 .movements-panel__summary {

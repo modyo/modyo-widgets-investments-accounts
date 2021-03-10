@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/variables";
 
 .investments-summary__progress {
   height: 3rem;
