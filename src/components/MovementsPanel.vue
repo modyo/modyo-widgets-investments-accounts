@@ -188,12 +188,14 @@
           </div>
           <div
             v-else
-            id="movements-accordion">
+            id="movements-accordion"
+            class="accordion">
             <div
               v-for="movement in movements"
               :key="movement.id"
               class="movements-panel__row bg-white border-bottom py-2">
               <a
+                :id="'#movements-' + movement.id"
                 :href="'#movements-' + movement.id"
                 :aria-controls="'#movements-' + movement.id"
                 data-toggle="collapse"
@@ -213,9 +215,9 @@
               </a>
               <div
                 :id="'movements-' + movement.id"
-                role="tabpanel"
                 class="collapse py-2 px-4 border-top movements-panel__row-details"
-                data-parent="#movements-accordion">
+                data-parent="#movements-accordion"
+                :aria-labelledby="'#movements-' + movement.id">
                 <div
                   v-if="movement.subject == 'cash'"
                   class="row">

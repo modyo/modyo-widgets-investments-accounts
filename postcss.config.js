@@ -22,6 +22,8 @@ module.exports = {
         /^multiselect*/,
         /modal-backdrop/,
         /^vd-*/,
+        /^collapsing/,
+        /^show/,
       ],
     })]
     : [AUTOPREFIXER],
