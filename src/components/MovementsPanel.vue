@@ -411,7 +411,6 @@ import {
   startOfMonth, endOfMonth, subMonths, format, parseISO,
 } from 'date-fns';
 import { currency, date } from '@modyo/financial-commons';
-import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
 
 export default {
 
@@ -531,6 +530,8 @@ export default {
   },
 };
 </script>
+
+<style src="@mathieustan/vue-datepicker/dist/vue-datepicker.min.css"></style>
 
 <style lang="scss" scoped>
 @import "../scss/variables";
