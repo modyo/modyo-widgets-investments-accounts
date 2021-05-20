@@ -7,9 +7,9 @@ const BASE_URL = LANG === 'es-CL' ? 'https://api-bank.herokuapp.com' : 'https://
 export default {
   async GET_ACCOUNTS(context) {
     try {
-      const accounts = await axios.get(`${BASE_URL}/api/v1/AccountDetail`);
-      context.commit('SET_ACCOUNTS', accounts.data.data);
-      return accounts;
+      const response = await axios.get(`${BASE_URL}/api/v1/AccountDetail`);
+      context.commit('SET_ACCOUNTS', response.data.data);
+      return response;
     } catch (error) {
       return error;
     }
