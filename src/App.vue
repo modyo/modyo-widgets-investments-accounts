@@ -1,14 +1,10 @@
 <template>
   <div class="accounts-app py-lg-5">
-    <div
-      v-if="isLoading"
-      class="loading">
-      <div
-        class="spinner-border"
-        role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
+    <validation-card
+      v-if="isLoading || hasError || !exactData"
+      :is-loading="isLoading"
+      :has-error="hasError"
+      :exact-data="exactData" />
     <div
       v-else
       class="accounts__container container-lg p-0">
@@ -98,6 +94,7 @@ import InvestmentsSummary from './components/InvestmentsSummary.vue';
 import MovementsPanel from './components/MovementsPanel.vue';
 import StatementsPanel from './components/StatementsPanel.vue';
 import InvestmentModal from './components/InvestmentModal.vue';
+import ValidationCard from './components/ValidationCard.vue';
 
 export default {
   name: 'Accounts',
@@ -109,17 +106,20 @@ export default {
     'investment-modal': InvestmentModal,
     'movements-panel': MovementsPanel,
     'statements-panel': StatementsPanel,
+    'validation-card': ValidationCard,
     Multiselect,
   },
   data() {
     return {
       isLoading: true,
+      hasError: false,
       config: false,
       statements: false,
       activeAccount: {},
       activeSlide: 'investments-details',
       investmentType: 'stocks',
       paramAccountId: parseInt(getURLParams('account'), 10),
+      exactData: false,
     };
   },
   computed: {
@@ -186,11 +186,17 @@ export default {
       this.investmentType = value;
     },
     fetchData() {
-      const vm = this;
       this.isLoading = true;
       this.$store.dispatch('GET_ACCOUNTS')
-        .then(() => {
-          vm.isLoading = false;
+        .then((payload) => {
+          if (payload.response?.status >= 400) {
+            this.hasError = true;
+          } else if (payload.accounts?.length !== 0) {
+            this.exactData = true;
+          }
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
       this.$store.dispatch('GET_INDICATORS');
     },
