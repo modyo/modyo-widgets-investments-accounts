@@ -1,10 +1,12 @@
 <template>
   <div class="accounts-app py-lg-5">
     <validation-card
-      v-if="isLoading || hasError || !exactData"
+      v-if="isLoading || hasError || isEmpty"
+      class="accounts__container container-lg text-center py-5"
       :is-loading="isLoading"
       :has-error="hasError"
-      :exact-data="exactData" />
+      :is-empty="isEmpty" />
+
     <div
       v-else
       class="accounts__container container-lg p-0">
@@ -119,7 +121,7 @@ export default {
       activeSlide: 'investments-details',
       investmentType: 'stocks',
       paramAccountId: parseInt(getURLParams('account'), 10),
-      exactData: false,
+      isEmpty: false,
     };
   },
   computed: {
@@ -191,8 +193,8 @@ export default {
         .then((payload) => {
           if (payload.response?.status >= 400) {
             this.hasError = true;
-          } else if (payload.accounts?.length !== 0) {
-            this.exactData = true;
+          } else if (payload.accounts?.length === 0) {
+            this.isEmpty = true;
           }
         })
         .finally(() => {

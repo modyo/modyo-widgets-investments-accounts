@@ -1,32 +1,33 @@
 <template>
-  <div
-    class="accounts__container container-lg text-center py-5">
-    <div
+  <div>
+    <slot
       v-if="isLoading"
-      class="loading">
+      name="loading">
       <div
-        class="spinner-border"
+        class="loading spinner-border"
         role="status">
         <span class="sr-only">Loading...</span>
       </div>
-    </div>
-    <div
-      v-else-if="hasError">
-      <div class="h1">
+    </slot>
+    <slot
+      v-if="hasError"
+      name="error">
+      <h3>
         Custom error message on fail
-      </div>
-    </div>
-    <div
-      v-else-if="!exactData"
-      class="h1 text-white">
-      Data incomplete, please try again in a while.
-    </div>
+      </h3>
+    </slot>
+    <slot
+      v-if="isEmpty"
+      name="empty">
+      <h3>
+        Data incomplete, please try again in a while.
+      </h3>
+    </slot>
   </div>
 </template>
 
 <script>
 export default {
-
   name: 'ValidationCard',
   props: {
     isLoading: {
@@ -37,10 +38,15 @@ export default {
       type: Boolean,
       required: true,
     },
-    exactData: {
+    isEmpty: {
       type: Boolean,
       required: true,
     },
+  },
+  data() {
+    return {
+      name: 'Johann',
+    };
   },
 };
 </script>
