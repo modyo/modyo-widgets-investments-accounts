@@ -26,7 +26,7 @@ export default {
           filters: payload.filters,
         },
       });
-      return movements;
+      return movements.data;
     } catch (error) {
       return error;
     }
@@ -34,12 +34,12 @@ export default {
 
   async GET_ACCOUNT_STATEMENTS(context, payload) {
     try {
-      const movements = await axios.get(`${BASE_URL}/api/v1/AccountStatement`, {
+      const statements = await axios.get(`${BASE_URL}/api/v1/AccountStatement`, {
         params: {
           id: payload.id,
         },
       });
-      return movements;
+      return statements.data;
     } catch (error) {
       return error;
     }
