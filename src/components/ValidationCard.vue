@@ -1,23 +1,19 @@
 <template>
   <div>
     <slot
-      v-if="isLoading"
+      v-if="status === 'isLoading'"
       name="loading">
-      <div
-        class="loading spinner-border"
-        role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+      <h3>Loading...</h3>
     </slot>
     <slot
-      v-if="hasError"
+      v-if="status === 'hasError'"
       name="error">
       <h3>
         Custom error message on fail
       </h3>
     </slot>
     <slot
-      v-if="isEmpty"
+      v-if=" status === 'isEmpty'"
       name="empty">
       <h3>
         Data incomplete, please try again in a while.
@@ -30,23 +26,15 @@
 export default {
   name: 'ValidationCard',
   props: {
-    isLoading: {
-      type: Boolean,
+    status: {
+      type: [String, Boolean],
       required: true,
+      validator: (prop) => [
+        'isLoading',
+        'hasError',
+        'isEmpty',
+      ].includes(prop),
     },
-    hasError: {
-      type: Boolean,
-      required: true,
-    },
-    isEmpty: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      name: 'Johann',
-    };
   },
 };
 </script>
