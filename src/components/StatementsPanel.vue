@@ -15,9 +15,42 @@
         {{ $t('statements.title') }}
       </p>
     </div>
-    <div class="my-4 mt-lg-0 mb-lg-1 h-100">
-      <m-shadow-scroll class="h-100">
-        <div class="mx-4 mx-lg-1 mb-0 mt-1">
+    <div
+      class="my-4 mt-lg-0 mb-lg-1 h-100">
+      <m-shadow-scroll
+        class="h-100">
+        <validation-card
+          v-if="responseStatus"
+          class="accounts__container container-lg text-center py-5"
+          :status="responseStatus">
+          <template #loading>
+            <div
+              class="loading spinner-border"
+              role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </template>
+          <template #error>
+            <div class="d-flex flex-column justify-content-center p-4 h-100">
+              <h5 class="text-center">
+                {{ $t('statements.error') }}
+              </h5>
+              <p class="text-muted text-center mb-0">
+                {{ $t('commons.try-again') }}
+              </p>
+            </div>
+          </template>
+          <template #empty>
+            <div class="d-flex flex-column justify-content-center p-4 h-100">
+              <h5 class="text-center">
+                {{ $t('statements.no-statements') }}
+              </h5>
+            </div>
+          </template>
+        </validation-card>
+        <div
+          v-else
+          class="mx-4 mx-lg-1 mb-0 mt-1">
           <table class="table border-bottom mb-0">
             <tbody class="border-left border-right">
               <tr
@@ -62,10 +95,12 @@
 <script>
 
 import { date, MShadowScroll } from '@modyo/financial-commons';
+import ValidationCard from './ValidationCard.vue';
 
 export default {
   name: 'StatementsPanel',
   components: {
+    'validation-card': ValidationCard,
     MShadowScroll,
   },
   filters: { date },
@@ -77,8 +112,8 @@ export default {
   },
   data() {
     return {
-      isLoading: true,
       statements: [],
+      responseStatus: false,
     };
   },
   computed: {
@@ -96,16 +131,22 @@ export default {
   },
   methods: {
     fetchAccountStatements() {
-      this.isLoading = true;
+      this.responseStatus = 'isLoading';
       const params = {
         id: this.accountId,
       };
       this.$store.dispatch('GET_ACCOUNT_STATEMENTS', params)
-        .then(({ data }) => {
-          const dato = data.data;
-          this.statements = dato.account.statements;
-          this.isLoading = false;
-        }, (err) => err);
+        .then((data) => {
+          const payload = data.data;
+          if (data.response?.status >= 400) {
+            this.responseStatus = 'hasError';
+          } else if (payload.account.statements.length === 0) {
+            this.responseStatus = 'isEmpty';
+          } else {
+            this.statements = payload.account.statements;
+            this.responseStatus = false;
+          }
+        });
     },
   },
 };
