@@ -166,150 +166,166 @@
         </div>
       </div>
       <div class="col-lg-8 movements-panel__content p-lg-1 px-4 mb-4 mb-lg-0">
-        <div
-          v-if="isLoading"
-          class="spinner-border"
-          role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div
-          v-else
-          class="h-100 d-flex flex-column justify-content-between border">
-          <div
-            v-if="!movements.length"
-            class="d-flex flex-column justify-content-center p-4 h-100">
-            <h5 class="text-center">
-              {{ $t('movements.no-movements') }}
-            </h5>
-            <p class="text-muted text-center mb-0">
-              <span class="d-none d-lg-block">{{ $t('movements.select-other-period-sidebar') }}</span>
-              <span class="d-lg-none">{{ $t('movements.select-other-period') }}</span>
-            </p>
-          </div>
-          <div
-            v-else
-            id="movements-accordion"
-            class="accordion">
+        <div class="h-100 d-flex flex-column justify-content-between border">
+          <m-shadow-scroll class="h-100">
+            <validation-card
+              v-if="responseStatus"
+              class="accounts__container container-lg text-center py-5"
+              :status="responseStatus">
+              <template #loading>
+                <div
+                  class="loading spinner-border"
+                  role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </template>
+              <template #error>
+                <div class="d-flex flex-column justify-content-center p-4 h-100">
+                  <h5 class="text-center">
+                    {{ $t('movements.error') }}
+                  </h5>
+                  <p class="text-muted text-center mb-0">
+                    {{ $t('commons.try-again') }}
+                  </p>
+                </div>
+              </template>
+              <template #empty>
+                <div class="d-flex flex-column justify-content-center p-4 h-100">
+                  <h5 class="text-center">
+                    {{ $t('movements.no-movements') }}
+                  </h5>
+                  <p class="text-muted text-center mb-0">
+                    <span class="d-none d-lg-block">{{ $t('movements.select-other-period-sidebar') }}</span>
+                    <span class="d-lg-none">{{ $t('movements.select-other-period') }}</span>
+                  </p>
+                </div>
+              </template>
+            </validation-card>
             <div
-              v-for="movement in movements"
-              :key="movement.id"
-              class="movements-panel__row bg-white border-bottom py-2">
-              <a
-                :id="'#movements-' + movement.id"
-                :href="'#movements-' + movement.id"
-                :aria-controls="'#movements-' + movement.id"
-                data-toggle="collapse"
-                aria-expanded="false"
-                class="row no-gutters collapsed py-2 px-lg-4 btn d-flex rounded-0 position-relative align-items-center"
-                tabindex="0">
-                <div class="col-3 text-left d-none d-lg-block"><span>{{ movement.date | date }}</span></div>
-                <div class="col-6 col-lg-5 text-left">{{ movement.description }}</div>
-                <div class="col-5 col-lg-3 text-right">
-                  <span v-if="movement.type === 'CARGO'">-</span>
-                  {{ movement.amount.valueString }}
-                </div>
-                <div class="col text-right">
-                  <font-awesome-icon
-                    icon="chevron-up" />
-                </div>
-              </a>
+              v-else
+              id="movements-accordion"
+              class="accordion">
               <div
-                :id="'movements-' + movement.id"
-                class="collapse py-2 px-4 border-top movements-panel__row-details"
-                data-parent="#movements-accordion"
-                :aria-labelledby="'#movements-' + movement.id">
+                v-for="movement in movements"
+                :key="movement.id"
+                class="movements-panel__row bg-white border-bottom py-2">
+                <a
+                  :id="'#movements-' + movement.id"
+                  :href="'#movements-' + movement.id"
+                  :aria-controls="'#movements-' + movement.id"
+                  data-toggle="collapse"
+                  aria-expanded="false"
+                  class="row no-gutters collapsed py-2 px-lg-4 btn d-flex
+                  rounded-0 position-relative align-items-center"
+                  tabindex="0">
+                  <div class="col-3 text-left d-none d-lg-block"><span>{{ movement.date | date }}</span></div>
+                  <div class="col-6 col-lg-5 text-left">{{ movement.description }}</div>
+                  <div class="col-5 col-lg-3 text-right">
+                    <span v-if="movement.type === 'CARGO'">-</span>
+                    {{ movement.amount.valueString }}
+                  </div>
+                  <div class="col text-right">
+                    <font-awesome-icon
+                      icon="chevron-up" />
+                  </div>
+                </a>
                 <div
-                  v-if="movement.subject == 'cash'"
-                  class="row">
-                  <div class="col">
-                    <small
-                      v-if="movement.type === 'CARGO'"
-                      class="d-block">{{ $t('movements.to-account') }}</small>
-                    <small
-                      v-if="movement.type === 'ABONO'"
-                      class="d-block">{{ $t('movements.from-account') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.accountNumber }}</strong>
-                    </p>
+                  :id="'movements-' + movement.id"
+                  class="collapse py-2 px-4 border-top movements-panel__row-details"
+                  data-parent="#movements-accordion"
+                  :aria-labelledby="'#movements-' + movement.id">
+                  <div
+                    v-if="movement.subject == 'cash'"
+                    class="row">
+                    <div class="col">
+                      <small
+                        v-if="movement.type === 'CARGO'"
+                        class="d-block">{{ $t('movements.to-account') }}</small>
+                      <small
+                        v-if="movement.type === 'ABONO'"
+                        class="d-block">{{ $t('movements.from-account') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.accountNumber }}</strong>
+                      </p>
+                    </div>
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.amount') }}</small>
+                      <p
+                        v-if="movement.type === 'CARGO'"
+                        class="mb-0">
+                        <strong>{{ movement.amount.valueString }}</strong>
+                      </p>
+                      <p
+                        v-if="movement.type === 'ABONO'"
+                        class="mb-0">
+                        <strong>{{ movement.amount.valueString }}</strong>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.amount') }}</small>
-                    <p
-                      v-if="movement.type === 'CARGO'"
-                      class="mb-0">
-                      <strong>{{ movement.amount.valueString }}</strong>
-                    </p>
-                    <p
-                      v-if="movement.type === 'ABONO'"
-                      class="mb-0">
-                      <strong>{{ movement.amount.valueString }}</strong>
-                    </p>
-                  </div>
-                </div>
 
-                <div
-                  v-if="movement.subject == 'stock'"
-                  class="row">
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.stock') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.productName }}</strong>
-                    </p>
+                  <div
+                    v-if="movement.subject == 'stock'"
+                    class="row">
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.stock') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.productName }}</strong>
+                      </p>
+                    </div>
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.quantity') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.quantity }}</strong>
+                      </p>
+                    </div>
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.unit-price') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.priceString }}</strong>
+                      </p>
+                    </div>
+                    <div class="col text-lg-right">
+                      <small class="d-block">{{ $t('movements.total-amount') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.amount.valueString }}</strong>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.quantity') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.quantity }}</strong>
-                    </p>
-                  </div>
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.unit-price') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.priceString }}</strong>
-                    </p>
-                  </div>
-                  <div class="col text-lg-right">
-                    <small class="d-block">{{ $t('movements.total-amount') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.amount.valueString }}</strong>
-                    </p>
-                  </div>
-                </div>
 
-                <div
-                  v-if="movement.subject == 'fund'"
-                  class="row">
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.mutual-fund') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.productName }}</strong>
-                    </p>
-                  </div>
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.fees') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.quantity }}</strong>
-                    </p>
-                  </div>
-                  <div class="col">
-                    <small class="d-block">{{ $t('movements.fee-value') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.priceString }}</strong>
-                    </p>
-                  </div>
-                  <div class="col text-lg-right">
-                    <small class="d-block">{{ $t('movements.total-amount') }}</small>
-                    <p class="mb-0">
-                      <strong>{{ movement.amount.valueString }}</strong>
-                    </p>
+                  <div
+                    v-if="movement.subject == 'fund'"
+                    class="row">
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.mutual-fund') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.productName }}</strong>
+                      </p>
+                    </div>
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.fees') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.quantity }}</strong>
+                      </p>
+                    </div>
+                    <div class="col">
+                      <small class="d-block">{{ $t('movements.fee-value') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.priceString }}</strong>
+                      </p>
+                    </div>
+                    <div class="col text-lg-right">
+                      <small class="d-block">{{ $t('movements.total-amount') }}</small>
+                      <p class="mb-0">
+                        <strong>{{ movement.amount.valueString }}</strong>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
+          </m-shadow-scroll>
           <div
-            v-if="filterByAll && movements.length"
+            v-if="filterByAll && movements.length && !responseStatus"
             class="movements-panel__summary mt-3">
             <a
               href="#"
@@ -410,15 +426,18 @@ import { VueDatePicker } from '@mathieustan/vue-datepicker';
 import {
   startOfMonth, endOfMonth, subMonths, format, parseISO,
 } from 'date-fns';
-import { currency, date } from '@modyo/financial-commons';
+import { currency, date, MShadowScroll } from '@modyo/financial-commons';
 import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
+import ValidationCard from './ValidationCard.vue';
 
 export default {
 
   name: 'MovementsPanel',
   filters: { currency, date },
   components: {
+    'validation-card': ValidationCard,
     VueDatePicker,
+    MShadowScroll,
   },
   props: {
     account: {
@@ -428,7 +447,7 @@ export default {
   },
   data() {
     return {
-      isLoading: true,
+      responseStatus: false,
       activeSummary: false,
       monthPeriod: true,
       visibleFilters: false,
@@ -510,7 +529,7 @@ export default {
     },
 
     fetchAccountMovements() {
-      this.isLoading = true;
+      this.responseStatus = 'isLoading';
       const params = {
         id: this.account.id,
         fromDate: this.fromDate,
@@ -520,13 +539,18 @@ export default {
       };
 
       this.$store.dispatch('GET_ACCOUNT_MOVEMENTS', params)
-        .then(({ data }) => {
-          const dato = data.data;
-          this.movements = dato.movements;
-          this.summary = dato.summary;
-          this.isLoading = false;
-        })
-        .catch((err) => err);
+        .then((data) => {
+          const payload = data.data;
+          if (data.response?.status >= 400) {
+            this.responseStatus = 'hasError';
+          } else if (payload.movements?.length === 0) {
+            this.responseStatus = 'isEmpty';
+          } else {
+            this.movements = payload.movements;
+            this.summary = payload.summary;
+            this.responseStatus = false;
+          }
+        });
     },
   },
 };
