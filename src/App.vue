@@ -49,7 +49,7 @@
               @config="openConfigPanel()"
               @goto="goToSlide" />
           </div>
-          <div class="col-lg-8 accounts__investsments-summary">
+          <div class="col-lg-8 accounts__investments-summary">
             <investments-summary
               v-if="!config && !statements"
               class="d-none d-lg-block"
@@ -241,7 +241,7 @@ export default {
     }
   }
 
-  .accounts__investsments-summary {
+  .accounts__investments-summary {
     background-color: $tertiary-20;
   }
 }
