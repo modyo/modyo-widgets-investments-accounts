@@ -19,10 +19,10 @@
       class="my-4 mt-lg-0 mb-lg-1 h-100">
       <m-shadow-scroll
         class="h-100">
-        <validation-card
-          v-if="responseStatus"
+        <m-response-control
+          v-if="apiStatus"
           class="accounts__container container-lg text-center py-5"
-          :status="responseStatus">
+          :status="apiStatus">
           <template #loading>
             <div
               class="loading spinner-border"
@@ -47,7 +47,7 @@
               </h5>
             </div>
           </template>
-        </validation-card>
+        </m-response-control>
         <div
           v-else
           class="mx-4 mx-lg-1 mb-0 mt-1">
@@ -94,13 +94,12 @@
 
 <script>
 
-import { date, MShadowScroll } from '@modyo/financial-commons';
-import ValidationCard from './ValidationCard.vue';
+import { MResponseControl, date, MShadowScroll } from '@modyo/financial-commons';
 
 export default {
   name: 'StatementsPanel',
   components: {
-    'validation-card': ValidationCard,
+    MResponseControl,
     MShadowScroll,
   },
   filters: { date },
@@ -113,7 +112,7 @@ export default {
   data() {
     return {
       statements: [],
-      responseStatus: false,
+      apiStatus: false,
     };
   },
   computed: {
@@ -131,7 +130,7 @@ export default {
   },
   methods: {
     fetchAccountStatements() {
-      this.responseStatus = 'isLoading';
+      this.apiStatus = 'isLoading';
       const params = {
         id: this.accountId,
       };
@@ -139,12 +138,12 @@ export default {
         .then((data) => {
           const payload = data.data;
           if (data.response?.status >= 400) {
-            this.responseStatus = 'hasError';
+            this.apiStatus = 'hasError';
           } else if (payload.account.statements.length === 0) {
-            this.responseStatus = 'isEmpty';
+            this.apiStatus = 'isEmpty';
           } else {
             this.statements = payload.account.statements;
-            this.responseStatus = false;
+            this.apiStatus = false;
           }
         });
     },

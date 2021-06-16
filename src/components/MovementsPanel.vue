@@ -168,10 +168,10 @@
       <div class="col-lg-8 movements-panel__content p-lg-1 px-4 mb-4 mb-lg-0">
         <div class="h-100 d-flex flex-column justify-content-between border">
           <m-shadow-scroll class="h-100">
-            <validation-card
-              v-if="responseStatus"
+            <m-response-control
+              v-if="apiStatus"
               class="accounts__container container-lg text-center py-5"
-              :status="responseStatus">
+              :status="apiStatus">
               <template #loading>
                 <div
                   class="loading spinner-border"
@@ -200,7 +200,7 @@
                   </p>
                 </div>
               </template>
-            </validation-card>
+            </m-response-control>
             <div
               v-else
               id="movements-accordion"
@@ -325,7 +325,7 @@
             </div>
           </m-shadow-scroll>
           <div
-            v-if="filterByAll && movements.length && !responseStatus"
+            v-if="filterByAll && movements.length && !apiStatus"
             class="movements-panel__summary mt-3">
             <a
               href="#"
@@ -426,16 +426,17 @@ import { VueDatePicker } from '@mathieustan/vue-datepicker';
 import {
   startOfMonth, endOfMonth, subMonths, format, parseISO,
 } from 'date-fns';
-import { currency, date, MShadowScroll } from '@modyo/financial-commons';
+import {
+  MResponseControl, currency, date, MShadowScroll,
+} from '@modyo/financial-commons';
 import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
-import ValidationCard from './ValidationCard.vue';
 
 export default {
 
   name: 'MovementsPanel',
   filters: { currency, date },
   components: {
-    'validation-card': ValidationCard,
+    MResponseControl,
     VueDatePicker,
     MShadowScroll,
   },
@@ -447,7 +448,7 @@ export default {
   },
   data() {
     return {
-      responseStatus: false,
+      apiStatus: false,
       activeSummary: false,
       monthPeriod: true,
       visibleFilters: false,
@@ -529,7 +530,7 @@ export default {
     },
 
     fetchAccountMovements() {
-      this.responseStatus = 'isLoading';
+      this.apiStatus = 'isLoading';
       const params = {
         id: this.account.id,
         fromDate: this.fromDate,
@@ -542,13 +543,13 @@ export default {
         .then((data) => {
           const payload = data.data;
           if (data.response?.status >= 400) {
-            this.responseStatus = 'hasError';
+            this.apiStatus = 'hasError';
           } else if (payload.movements?.length === 0) {
-            this.responseStatus = 'isEmpty';
+            this.apiStatus = 'isEmpty';
           } else {
             this.movements = payload.movements;
             this.summary = payload.summary;
-            this.responseStatus = false;
+            this.apiStatus = false;
           }
         });
     },

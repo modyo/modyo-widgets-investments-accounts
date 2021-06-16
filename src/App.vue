@@ -1,11 +1,9 @@
 <template>
   <div class="accounts-app py-lg-5">
-    <validation-card
-      v-if="isLoading || hasError || isEmpty"
+    <m-response-control
+      v-if="apiStatus"
       class="accounts__container container-lg text-center py-5"
-      :is-loading="isLoading"
-      :has-error="hasError"
-      :is-empty="isEmpty" />
+      :status="apiStatus" />
 
     <div
       v-else
@@ -87,7 +85,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-import { getURLParams } from '@modyo/financial-commons';
+import { getURLParams, MResponseControl } from '@modyo/financial-commons';
 
 import SummaryResume from './components/SummaryResume.vue';
 import SettingsPanel from './components/SettingsPanel.vue';
@@ -96,32 +94,29 @@ import InvestmentsSummary from './components/InvestmentsSummary.vue';
 import MovementsPanel from './components/MovementsPanel.vue';
 import StatementsPanel from './components/StatementsPanel.vue';
 import InvestmentModal from './components/InvestmentModal.vue';
-import ValidationCard from './components/ValidationCard.vue';
 
 export default {
   name: 'Accounts',
   components: {
-    'summary-resume': SummaryResume,
-    'settings-panel': SettingsPanel,
-    'investments-details': InvestmentsDetails,
-    'investments-summary': InvestmentsSummary,
-    'investment-modal': InvestmentModal,
-    'movements-panel': MovementsPanel,
-    'statements-panel': StatementsPanel,
-    'validation-card': ValidationCard,
+    SummaryResume,
+    SettingsPanel,
+    InvestmentsDetails,
+    InvestmentsSummary,
+    InvestmentModal,
+    MovementsPanel,
+    StatementsPanel,
+    MResponseControl,
     Multiselect,
   },
   data() {
     return {
-      isLoading: true,
-      hasError: false,
       config: false,
       statements: false,
       activeAccount: {},
       activeSlide: 'investments-details',
       investmentType: 'stocks',
       paramAccountId: parseInt(getURLParams('account'), 10),
-      isEmpty: false,
+      apiStatus: false,
     };
   },
   computed: {
@@ -188,17 +183,16 @@ export default {
       this.investmentType = value;
     },
     fetchData() {
-      this.isLoading = true;
+      this.apiStatus = 'isLoading';
       this.$store.dispatch('GET_ACCOUNTS')
         .then((payload) => {
           if (payload.response?.status >= 400) {
-            this.hasError = true;
+            this.apiStatus = 'hasError';
           } else if (payload.accounts?.length === 0) {
-            this.isEmpty = true;
+            this.apiStatus = 'isEmpty';
+          } else {
+            this.apiStatus = false;
           }
-        })
-        .finally(() => {
-          this.isLoading = false;
         });
       this.$store.dispatch('GET_INDICATORS');
     },
