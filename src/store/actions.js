@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import axios from 'axios';
 
 const LANG = window.liquid ? window.liquid.lang : 'es-CL';
@@ -11,7 +12,7 @@ export default {
       context.commit('SET_ACCOUNTS', response.data.data);
       return response;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
@@ -28,7 +29,7 @@ export default {
       });
       return movements.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
@@ -41,7 +42,7 @@ export default {
       });
       return statements.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
@@ -51,7 +52,7 @@ export default {
       context.commit('SET_INDICATORS', indicators.data);
       return indicators;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 };
