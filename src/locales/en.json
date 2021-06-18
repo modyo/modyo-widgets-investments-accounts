@@ -1,6 +1,8 @@
 {
   "commons": {
-    "back": "Back"
+    "back": "Back",
+    "try-again": "Try again in a while",
+    "empty": "There's no data to show"
   },
   "date": {
     "format": {
@@ -95,7 +97,8 @@
       "stock-purchase": "Stock purchases",
       "stock-sell": "Stock sales"
     },
-    "unit-price": "Unit price"
+    "unit-price": "Unit price",
+    "error": "There was an error getting your account movements"
   },
   "settings-panel": {
     "account-name-lbl": "Account name",
@@ -106,7 +109,9 @@
   "statements": {
     "download": "Download",
     "period": "Period",
-    "title": "Account Statements"
+    "title": "Account Statements",
+    "error": "There was an error getting your statements",
+    "no-statements": "There are no statements"
   },
   "summary-resume": {
     "account-label": "Equity Account",
