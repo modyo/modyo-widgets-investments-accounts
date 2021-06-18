@@ -1,7 +1,8 @@
 {
   "commons": {
     "back": "Back",
-    "try-again": "Try again in a while"
+    "try-again": "Try again in a while",
+    "empty": "There's no data to show"
   },
   "date": {
     "format": {

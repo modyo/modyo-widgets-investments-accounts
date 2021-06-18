@@ -1,7 +1,8 @@
 {
   "commons": {
     "back": "Volver",
-    "try-again": "Intente de nuevo en un momento"
+    "try-again": "Intente de nuevo en un momento",
+    "empty": "No hay datos para mostrar"
   },
   "date": {
     "format": {

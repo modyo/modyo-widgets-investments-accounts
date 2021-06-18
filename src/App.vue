@@ -3,7 +3,29 @@
     <m-response-control
       v-if="apiStatus"
       class="accounts__container container-lg text-center py-5"
-      :status="apiStatus" />
+      :status="apiStatus">
+      <template #loading>
+        <div
+          class="loading spinner-border"
+          role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </template>
+      <template #error>
+        <div class="d-flex flex-column justify-content-center p-4 h-100">
+          <h5 class="text-center">
+            {{ $t('commons.try-again') }}
+          </h5>
+        </div>
+      </template>
+      <template #empty>
+        <div class="d-flex flex-column justify-content-center p-4 h-100">
+          <h5 class="text-center">
+            {{ $t('commons.empty') }}
+          </h5>
+        </div>
+      </template>
+    </m-response-control>
 
     <div
       v-else
@@ -86,7 +108,6 @@
 <script>
 import Multiselect from 'vue-multiselect';
 import { getURLParams, MResponseControl } from '@modyo/financial-commons';
-
 import SummaryResume from './components/SummaryResume.vue';
 import SettingsPanel from './components/SettingsPanel.vue';
 import InvestmentsDetails from './components/InvestmentsDetails.vue';
@@ -98,6 +119,7 @@ import InvestmentModal from './components/InvestmentModal.vue';
 export default {
   name: 'Accounts',
   components: {
+    MResponseControl,
     SummaryResume,
     SettingsPanel,
     InvestmentsDetails,
@@ -105,18 +127,17 @@ export default {
     InvestmentModal,
     MovementsPanel,
     StatementsPanel,
-    MResponseControl,
     Multiselect,
   },
   data() {
     return {
+      apiStatus: false,
       config: false,
       statements: false,
       activeAccount: {},
       activeSlide: 'investments-details',
       investmentType: 'stocks',
       paramAccountId: parseInt(getURLParams('account'), 10),
-      apiStatus: false,
     };
   },
   computed: {
@@ -186,13 +207,14 @@ export default {
       this.apiStatus = 'isLoading';
       this.$store.dispatch('GET_ACCOUNTS')
         .then((payload) => {
-          if (payload.response?.status >= 400) {
-            this.apiStatus = 'hasError';
-          } else if (payload.accounts?.length === 0) {
+          if (payload.accounts?.length === 0) {
             this.apiStatus = 'isEmpty';
           } else {
             this.apiStatus = false;
           }
+        })
+        .catch(() => {
+          this.apiStatus = 'hasError';
         });
       this.$store.dispatch('GET_INDICATORS');
     },
