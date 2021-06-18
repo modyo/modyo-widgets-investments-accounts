@@ -114,7 +114,7 @@ export default {
   methods: {
     setModalData(data) {
       this.$store.commit('SET_MODAL_DATA', data);
-      $(this.$el).parents('.accounts-app').find('#accounts-modal').modal('show');
+      $('#accounts-modal').modal('show');
     },
   },
 };
