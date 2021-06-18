@@ -1,6 +1,8 @@
 {
   "commons": {
-    "back": "Volver"
+    "back": "Volver",
+    "try-again": "Intente de nuevo en un momento",
+    "empty": "No hay datos para mostrar"
   },
   "date": {
     "format": {
@@ -95,7 +97,8 @@
       "stock-purchase": "Compra acciones",
       "stock-sell": "Venta acciones"
     },
-    "unit-price": "Precio Unitario"
+    "unit-price": "Precio Unitario",
+    "error": "Ha ocurrido un error al consultar sus movimientos"
   },
   "settings-panel": {
     "account-name-lbl": "Nombre cuenta",
@@ -106,7 +109,9 @@
   "statements": {
     "download": "Descargar",
     "period": "Período",
-    "title": "Cartolas de la Cuenta"
+    "title": "Cartolas de la Cuenta",
+    "error": "Hubo un error al obtener sus cartolas de cuenta",
+    "no-statements": "No hay cartolas en esta cuenta"
   },
   "summary-resume": {
     "account-label": "Patrimonio cuenta",

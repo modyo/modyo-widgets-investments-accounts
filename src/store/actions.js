@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import axios from 'axios';
 
 const LANG = window.liquid ? window.liquid.lang : 'es-CL';
@@ -7,11 +8,11 @@ const BASE_URL = LANG === 'es-CL' ? 'https://api-bank.herokuapp.com' : 'https://
 export default {
   async GET_ACCOUNTS(context) {
     try {
-      const accounts = await axios.get(`${BASE_URL}/api/v1/AccountDetail`);
-      context.commit('SET_ACCOUNTS', accounts.data.data);
-      return accounts;
+      const response = await axios.get(`${BASE_URL}/api/v1/AccountDetail`);
+      context.commit('SET_ACCOUNTS', response.data.data);
+      return response;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
@@ -26,22 +27,22 @@ export default {
           filters: payload.filters,
         },
       });
-      return movements;
+      return movements.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
   async GET_ACCOUNT_STATEMENTS(context, payload) {
     try {
-      const movements = await axios.get(`${BASE_URL}/api/v1/AccountStatement`, {
+      const statements = await axios.get(`${BASE_URL}/api/v1/AccountStatement`, {
         params: {
           id: payload.id,
         },
       });
-      return movements;
+      return statements.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 
@@ -51,7 +52,7 @@ export default {
       context.commit('SET_INDICATORS', indicators.data);
       return indicators;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 };

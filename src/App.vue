@@ -1,14 +1,32 @@
 <template>
   <div class="accounts-app py-lg-5">
-    <div
-      v-if="isLoading"
-      class="loading">
-      <div
-        class="spinner-border"
-        role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
+    <m-response-control
+      v-if="apiStatus"
+      class="accounts__container container-lg text-center py-5"
+      :status="apiStatus">
+      <template #loading>
+        <div
+          class="loading spinner-border"
+          role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </template>
+      <template #error>
+        <div class="d-flex flex-column justify-content-center p-4 h-100">
+          <h5 class="text-center">
+            {{ $t('commons.try-again') }}
+          </h5>
+        </div>
+      </template>
+      <template #empty>
+        <div class="d-flex flex-column justify-content-center p-4 h-100">
+          <h5 class="text-center">
+            {{ $t('commons.empty') }}
+          </h5>
+        </div>
+      </template>
+    </m-response-control>
+
     <div
       v-else
       class="accounts__container container-lg p-0">
@@ -51,7 +69,7 @@
               @config="openConfigPanel()"
               @goto="goToSlide" />
           </div>
-          <div class="col-lg-8 accounts__investsments-summary">
+          <div class="col-lg-8 accounts__investments-summary">
             <investments-summary
               v-if="!config && !statements"
               class="d-none d-lg-block"
@@ -89,8 +107,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-import { getURLParams } from '@modyo/financial-commons';
-
+import { getURLParams, MResponseControl } from '@modyo/financial-commons';
 import SummaryResume from './components/SummaryResume.vue';
 import SettingsPanel from './components/SettingsPanel.vue';
 import InvestmentsDetails from './components/InvestmentsDetails.vue';
@@ -102,18 +119,19 @@ import InvestmentModal from './components/InvestmentModal.vue';
 export default {
   name: 'Accounts',
   components: {
-    'summary-resume': SummaryResume,
-    'settings-panel': SettingsPanel,
-    'investments-details': InvestmentsDetails,
-    'investments-summary': InvestmentsSummary,
-    'investment-modal': InvestmentModal,
-    'movements-panel': MovementsPanel,
-    'statements-panel': StatementsPanel,
+    MResponseControl,
+    SummaryResume,
+    SettingsPanel,
+    InvestmentsDetails,
+    InvestmentsSummary,
+    InvestmentModal,
+    MovementsPanel,
+    StatementsPanel,
     Multiselect,
   },
   data() {
     return {
-      isLoading: true,
+      apiStatus: false,
       config: false,
       statements: false,
       activeAccount: {},
@@ -186,11 +204,17 @@ export default {
       this.investmentType = value;
     },
     fetchData() {
-      const vm = this;
-      this.isLoading = true;
+      this.apiStatus = 'isLoading';
       this.$store.dispatch('GET_ACCOUNTS')
-        .then(() => {
-          vm.isLoading = false;
+        .then((payload) => {
+          if (payload.accounts?.length === 0) {
+            this.apiStatus = 'isEmpty';
+          } else {
+            this.apiStatus = false;
+          }
+        })
+        .catch(() => {
+          this.apiStatus = 'hasError';
         });
       this.$store.dispatch('GET_INDICATORS');
     },
@@ -233,7 +257,7 @@ export default {
     }
   }
 
-  .accounts__investsments-summary {
+  .accounts__investments-summary {
     background-color: $tertiary-20;
   }
 }
