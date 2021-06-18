@@ -58,7 +58,7 @@ class LiquidParserClass {
     }
     return `{%endraw%}${liquidString}{%raw%}`;
   }
-  
+
   parseAsync(liquidString) {
     if (process.env.NODE_ENV !== 'production') {
       return this.parseLiquidAsync(liquidString);
