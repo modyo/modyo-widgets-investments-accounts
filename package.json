@@ -24,7 +24,7 @@
     "@mathieustan/vue-datepicker": "0.2.11",
     "@modyo/financial-commons": "^2.1.31",
     "autoprefixer": "^9.8.6",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.6.0",
     "core-js": "^3.9.1",
     "currency.js": "^2.0.3",
